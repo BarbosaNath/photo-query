@@ -1,0 +1,34 @@
+{
+  "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+  "_comment": "This config was generated using 'stryker init'. Please see the guide for more information: https://stryker-mutator.io/docs/stryker-js/guides/react",
+  "testRunner": "vitest",
+  "incremental": true,
+  "incrementalFile": "reports/mutation/stryker-incremental.json",
+  "checkers": ["typescript"],
+  "tsconfigFile": "tsconfig.json",
+  "ignorePatterns": [
+    "docs",
+    ".husky",
+    ".vscode",
+    "src/main.tsx",
+    "src/routeTree.gen.ts",
+    "src/App.tsx",
+    "./.storybook/*",
+    "**/*.stories.{ts,tsx,js,jsx}"
+  ],
+  "reporters": ["progress", "clear-text", "html"],
+  "htmlReporter": {
+    "fileName": "reports/mutation/mutation.html"
+  },
+  "concurrency": 7,
+  "coverageAnalysis": "perTest",
+  "thresholds": {
+    "high": 100,
+    "low": 90,
+    "break": 90
+  },
+  "mutate": ["./src/**/*.{js,ts,tsx}"],
+  "disableTypeChecks": "{test,src,lib}/**/*.{js,ts,jsx,tsx,html,vue,cts,mts}",
+  "tempDirName": ".stryker-tmp",
+  "cleanTempDir": true
+}

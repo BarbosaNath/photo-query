@@ -1,0 +1,81 @@
+import Button from "@components/button";
+import ButtonLayout from "@components/button-layout";
+import Input from "@components/input";
+import Stack from "@components/stack";
+import { CustomStackAsProp } from "@components/stack/types";
+import Text from "@components/text";
+import { RegisterFormProps } from "@pages/login/types";
+import { useCallback } from "react";
+
+export default function RegisterForm({
+  isLoading,
+  errorMessage,
+  userRegisterBody,
+  handleChange,
+  handleRegister,
+}: RegisterFormProps) {
+  const FormWrapper = useCallback<CustomStackAsProp>(
+    ({ className, children }) => (
+      <form className={className} onSubmit={handleRegister}>
+        {children}
+      </form>
+    ),
+    [handleRegister],
+  );
+
+  return (
+    <Stack as={FormWrapper} align="stretch" justify="between" fullWidth>
+      <Text as="h3" weight="bold" center secondary>
+        Registre-se
+      </Text>
+
+      <Stack
+        align="stretch"
+        justify="start"
+        space="xl"
+        paddingTop="xxl"
+        paddingBottom="xl"
+        fullHeight
+      >
+        <Input
+          label="Nome"
+          placeholder="seu nome"
+          value={userRegisterBody.name}
+          onChange={(e) => handleChange("name", e.target.value)}
+        />
+
+        <Input
+          label="Email"
+          name="email"
+          type="email"
+          placeholder="digite seu email"
+          value={userRegisterBody.email}
+          onChange={(e) => handleChange("email", e.target.value)}
+        />
+
+        <Input
+          label="Senha"
+          name="password"
+          type="password"
+          placeholder="crie uma senha"
+          value={userRegisterBody.password}
+          onChange={(e) => handleChange("password", e.target.value)}
+        />
+
+        {Boolean(errorMessage) && <Text>{errorMessage}</Text>}
+      </Stack>
+
+      <ButtonLayout
+        column
+        primaryButton={
+          <Stack align="stretch">
+            <Button primary type="submit" disabled={isLoading}>
+              {isLoading ? "Carregando..." : "Submit"}
+            </Button>
+          </Stack>
+        }
+        secondaryButton={<Stack paddingBlock="sm" />}
+      />
+    </Stack>
+  );
+}

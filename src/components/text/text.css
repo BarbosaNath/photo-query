@@ -1,0 +1,83 @@
+.lds--text {
+  font-family: var(--lds-fontfamily-sans);
+}
+
+.lds--text--center {
+  align-self: center;
+}
+
+.lds--text--justify {
+  text-align: justify;
+}
+
+.lds--text--xs {
+  font-size: var(--lds-fontsize-xs);
+}
+
+.lds--text--sm {
+  font-size: var(--lds-fontsize-sm);
+}
+
+.lds--text--md {
+  font-size: var(--lds-fontsize-md);
+}
+
+.lds--text--lg {
+  font-size: var(--lds-fontsize-lg);
+}
+
+.lds--text--xl {
+  font-size: var(--lds-fontsize-xl);
+}
+
+.lds--text--hero {
+  font-size: var(--lds-fontsize-hero);
+}
+
+.lds--text--default {
+  color: var(--lds-text-color-default);
+}
+
+.lds--text--success {
+  color: var(--lds-text-color-success);
+}
+
+.lds--text--error {
+  color: var(--lds-text-color-error);
+}
+
+.lds--text--primary {
+  color: var(--lds-text-color-primary);
+}
+
+.lds--text--secondary {
+  color: var(--lds-text-color-secondary);
+}
+
+.lds--text--tertiary {
+  color: var(--lds-text-color-tertiary);
+}
+
+.lds--text--onbrand {
+  color: var(--lds-text-color-onbrand);
+}
+
+.lds--text--light {
+  font-weight: var(--lds-fontweight-light);
+}
+
+.lds--text--regular {
+  font-weight: var(--lds-fontweight-regular);
+}
+
+.lds--text--medium {
+  font-weight: var(--lds-fontweight-medium);
+}
+
+.lds--text--semibold {
+  font-weight: var(--lds-fontweight-semibold);
+}
+
+.lds--text--bold {
+  font-weight: var(--lds-fontweight-bold);
+}

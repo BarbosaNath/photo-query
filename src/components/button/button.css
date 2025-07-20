@@ -1,0 +1,55 @@
+.lds--button {
+  font-family: var(--lds-fontfamily-sans);
+  font-size: var(--lds-fontsize-md);
+
+  border-radius: var(--lds-radius);
+  box-sizing: border-box;
+
+  padding: calc(var(--lds-spacing-md) - 2px);
+
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.lds--button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.lds--button--primary {
+  color: var(--lds-text-color-onbrand);
+  background-color: var(--lds-color-brand);
+  border: 1px solid var(--lds-color-brand);
+}
+
+.lds--button--primary:not(:disabled):hover {
+  background-color: var(--lds-color-brand-light);
+  border: 1px solid var(--lds-color-brand-light);
+}
+
+.lds--button--primary:not(:disabled):active {
+  background-color: var(--lds-color-brand-dark);
+  border: 1px solid var(--lds-color-brand-dark);
+}
+
+.lds--button--secondary {
+  color: var(--lds-text-color-default);
+  background-color: transparent;
+  border: 1px solid var(--lds-color-dark);
+}
+
+.lds--button--secondary:not(:disabled):hover {
+  background-color: var(--lds-color-white-dark);
+}
+
+.lds--button--secondary:not(:disabled):active {
+  background-color: var(--lds-color-gray-light);
+}
+
+.lds--button--link {
+  color: var(--lds-text-color-primary);
+  text-decoration: underline;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}

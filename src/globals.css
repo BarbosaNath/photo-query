@@ -1,0 +1,70 @@
+:root {
+  --lds-color-brand-dark: #163465;
+  --lds-color-brand: #193c74;
+  --lds-color-brand-light: #1f4a8f;
+
+  --lds-color-dark: #1e1e1e;
+  --lds-color-dark-light: #757575;
+
+  --lds-color-gray-dark: #999999;
+  --lds-color-gray: #b3b3b3;
+  --lds-color-gray-light: #d9d9d9;
+
+  --lds-color-white-dark: #e6e6e6;
+  --lds-color-white: #f5f5f5;
+  --lds-color-pure-white: #fff;
+
+  --lds-color-success: #14ae5c;
+  --lds-color-warning: #e8b931;
+  --lds-color-error: #ec221f;
+
+  --lds-radius-none: 0px;
+  --lds-radius: 8px;
+  --lds-radius-md: 8px;
+  --lds-radius-xl: 20px;
+
+  --lds-fontfamily-sans: Inter, sans-serif;
+  --lds-fontfamily-serif: sans-serif;
+
+  --lds-fontsize-xs: 12px;
+  --lds-fontsize-sm: 14px;
+  --lds-fontsize-md: 16px;
+  --lds-fontsize-lg: 24px;
+  --lds-fontsize-xl: 32px;
+
+  --lds-fontweight-light: 300;
+  --lds-fontweight-regular: 400;
+  --lds-fontweight-medium: 500;
+  --lds-fontweight-semibold: 600;
+  --lds-fontweight-bold: 700;
+
+  --lds-spacing-xxs: 2px;
+  --lds-spacing-xs: 4px;
+  --lds-spacing-sm: 8px;
+  --lds-spacing-md: 12px;
+  --lds-spacing-lg: 16px;
+  --lds-spacing-xl: 24px;
+  --lds-spacing-xxl: 32px;
+  --lds-spacing-xxxl: 50px;
+  --lds-spacing-none: 0;
+
+  --lds-text-color-primary: var(--lds-color-brand);
+  --lds-text-color-default: var(--lds-color-dark);
+  --lds-text-color-secondary: var(--lds-color-dark-light);
+  --lds-text-color-tertiary: var(--lds-color-gray);
+  --lds-text-color-onbrand: var(--lds-color-white);
+  --lds-text-color-success: var(--lds-color-success);
+  --lds-text-color-warning: var(--lds-color-warning);
+  --lds-text-color-error: var(--lds-color-error);
+}
+
+body,
+html,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.recharts-wrapper svg {
+  overflow: inherit !important;
+}
