@@ -19,8 +19,11 @@
     "format:check": "prettier -c .",
     "format:fix": "prettier -w .",
     "preview": "vite preview",
-    "prepare": "husky"
+    "prepare": "husky",
+    "electron": "electron .",
+    "rebuild": "electron-rebuild -f -w better-sqlite3"
   },
+  "main": "main.js",
   "dependencies": {
     "@stryker-mutator/core": "^8.7.1",
     "@tanstack/react-router": "^1.120.11",
@@ -53,6 +56,8 @@
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",
     "@vitest/coverage-v8": "^3.1.1",
+    "electron": "^37.2.4",
+    "electron-rebuild": "^3.2.9",
     "eslint": "^9.23.0",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.1.0",

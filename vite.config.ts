@@ -16,6 +16,11 @@ export default defineConfig({
     }),
     react(),
   ],
+  build: {
+    rollupOptions: {
+      external: ["electron", "better-sqlite3"],
+    },
+  },
   resolve: {
     alias: {
       src: path.resolve(__dirname, "./src/"),
