@@ -21,6 +21,7 @@ export default function useLoginHandlers() {
       e.preventDefault();
       try {
         setIsLoading(true);
+        sessionStorage.setItem("isLogged", "true");
         redirect({ to: "/" });
       } catch {
         setErrorMessage("Algo deu errado ao logar, tente novamente");
