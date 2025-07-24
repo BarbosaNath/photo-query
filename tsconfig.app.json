@@ -31,6 +31,6 @@
       "@tests/*": ["./tests/*"]
     }
   },
-  "include": ["./src/"],
+  "include": ["./src/", "preload.js"],
   "exclude": ["dist"]
 }
