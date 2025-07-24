@@ -15,7 +15,7 @@ consumindo um banco de dados local _SQLite_ e suportando funcionalidades princip
 
 ## Tecnologias utilizadas
 
-- **Framework**: React (com Vite)
+- **Framework**: React (com Vite) e Electron
 - **Linguagem**: TypeScript / JavaScript
-- **Estilo**: CSS Puro
+- **Estilização**: Ledger Design System (WIP)
 - **Banco de Dados**: SQLite
