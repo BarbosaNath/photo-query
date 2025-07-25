@@ -1,13 +1,13 @@
-import Categories from "../view/characteristics.view";
-import { Route } from "..";
-import { useState } from "react";
-import { Characteristic } from "@utils/dtos";
+import Categories from '../view/characteristics.view';
+import { Route } from '..';
+import { useState } from 'react';
+import { Characteristic } from '@utils/dtos';
 
 export default function CategoriesController() {
   const characteristics = Route.useLoaderData();
   const redirect = Route.useNavigate();
-  const [searchValue, setSearchValue] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [searchValue, setSearchValue] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const [isEditingCharacteristic, setIsEditingCharacteristic] =
     useState<boolean>(false);
   const [editingCharacteristicId, setEditingCharacteristicId] = useState<
@@ -15,72 +15,72 @@ export default function CategoriesController() {
   >(null);
 
   const handleChangeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setErrorMessage("");
+    setErrorMessage('');
     setSearchValue(event.target.value);
   };
 
   const handleAddCategory = async (name: string) => {
     if (!name.trim()) {
-      setErrorMessage("Nome da característica não pode ser vazio.");
+      setErrorMessage('Nome da característica não pode ser vazio.');
       return;
     }
 
     const newCategory = await window.electronAPI.invoke<Characteristic>(
-      "add-characteristic",
+      'add-characteristic',
       {
         name: name.trim(),
       },
     );
 
-    console.log("Característica adicionada:", newCategory);
-    setErrorMessage("");
-    setSearchValue("");
-    redirect({ to: "." });
+    console.log('Característica adicionada:', newCategory);
+    setErrorMessage('');
+    setSearchValue('');
+    redirect({ to: '.' });
   };
 
   const handleRemoveCategory = async (id: number) => {
     if (!id) {
-      setErrorMessage("ID da característica não pode ser vazio.");
+      setErrorMessage('ID da característica não pode ser vazio.');
       return;
     }
 
     try {
-      await window.electronAPI.invoke("remove-characteristic", { id });
+      await window.electronAPI.invoke('remove-characteristic', { id });
       console.log(`Característica com ID ${id} removida.`);
-      setErrorMessage("");
-      redirect({ to: "." });
+      setErrorMessage('');
+      redirect({ to: '.' });
     } catch (error) {
-      setErrorMessage("Erro ao remover característica.");
+      setErrorMessage('Erro ao remover característica.');
 
       if (
-        typeof error === "object" &&
+        typeof error === 'object' &&
         error !== null &&
-        "message" in error &&
+        'message' in error &&
         (error as { message: string }).message.includes(
-          "FOREIGN KEY constraint failed",
+          'FOREIGN KEY constraint failed',
         )
       ) {
         setErrorMessage(
-          "Não é possível remover uma característica que possui produtos associados.",
+          'Não é possível remover uma característica que possui produtos associados.',
         );
       }
-      console.error("Erro ao remover característica:", error);
+      console.error('Erro ao remover característica:', error);
     }
   };
 
   const handleEditCategory = async () => {
     if (!editingCharacteristicId) {
-      setErrorMessage("ID da característica não pode ser vazio.");
+      setErrorMessage('ID da característica não pode ser vazio.');
       return;
     }
 
     if (!searchValue) {
-      setErrorMessage("Nome da característica não pode ser vazio.");
+      setErrorMessage('Nome da característica não pode ser vazio.');
       return;
     }
 
     try {
-      await window.electronAPI.invoke("update-characteristic", {
+      await window.electronAPI.invoke('update-characteristic', {
         id: editingCharacteristicId,
         newName: searchValue,
       });
@@ -89,12 +89,12 @@ export default function CategoriesController() {
       );
       setEditingCharacteristicId(null);
       setIsEditingCharacteristic(false);
-      setSearchValue("");
-      setErrorMessage("");
-      redirect({ to: "." });
+      setSearchValue('');
+      setErrorMessage('');
+      redirect({ to: '.' });
     } catch (error) {
-      setErrorMessage("Erro ao editar característica.");
-      console.error("Erro ao editar característica:", error);
+      setErrorMessage('Erro ao editar característica.');
+      console.error('Erro ao editar característica:', error);
     }
   };
 

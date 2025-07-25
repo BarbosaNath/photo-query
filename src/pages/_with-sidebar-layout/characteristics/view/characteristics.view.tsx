@@ -1,14 +1,14 @@
-import Button from "@components/button";
-import CenterLayout from "@components/center-layout";
-import Input from "@components/input";
-import Stack from "@components/stack";
-import { PlusIcon } from "lucide-react";
-import Text from "@components/text";
-import Modal from "@components/modal";
-import Card from "@components/card";
-import ButtonLayout from "@components/button-layout";
-import RowCard from "@components/row";
-import { CharacteristicProps } from "../types";
+import Button from '@components/button';
+import CenterLayout from '@components/center-layout';
+import Input from '@components/input';
+import Stack from '@components/stack';
+import { PlusIcon } from 'lucide-react';
+import Text from '@components/text';
+import Modal from '@components/modal';
+import Card from '@components/card';
+import ButtonLayout from '@components/button-layout';
+import RowCard from '@components/row';
+import { CharacteristicProps } from '../types';
 
 export default function Categories({
   characteristics,

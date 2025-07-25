@@ -1,7 +1,7 @@
-import CenterLayout from "@components/center-layout";
-import Stack from "@components/stack";
-import Text from "@components/text";
-import { Product } from "@utils/dtos";
+import CenterLayout from '@components/center-layout';
+import Stack from '@components/stack';
+import Text from '@components/text';
+import { Product } from '@utils/dtos';
 
 export default function Home({ products }: { products: Product[] }) {
   return (

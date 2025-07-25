@@ -6,16 +6,16 @@ declare global {
     electronAPI: {
       invoke: <T = unknown>(
         channel:
-          | "get-products"
-          | "add-product"
-          | "get-categories"
-          | "add-category"
-          | "remove-category"
-          | "update-category"
-          | "add-characteristic"
-          | "get-characteristics"
-          | "update-characteristic"
-          | "remove-characteristic",
+          | 'get-products'
+          | 'add-product'
+          | 'get-categories'
+          | 'add-category'
+          | 'remove-category'
+          | 'update-category'
+          | 'add-characteristic'
+          | 'get-characteristics'
+          | 'update-characteristic'
+          | 'remove-characteristic',
         data?:
           | GetProductsData
           | AddProductData

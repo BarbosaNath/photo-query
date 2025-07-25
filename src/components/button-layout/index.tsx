@@ -1,5 +1,5 @@
-import "./button-layout.css";
-import { ButtonLayoutProps } from "./types";
+import './button-layout.css';
+import { ButtonLayoutProps } from './types';
 
 export default function ButtonLayout({
   primaryButton,
@@ -7,19 +7,19 @@ export default function ButtonLayout({
   row,
   column,
   fullWidth = true,
-  space = "xs",
+  space = 'xs',
 }: ButtonLayoutProps) {
-  const base = "lds--button-layout";
+  const base = 'lds--button-layout';
 
   const getDirectionModifier = () => {
     if (row) return `${base}--row`;
     if (column) return `${base}--column`;
-    return "";
+    return '';
   };
 
   const getFullWidthModifier = () => {
     if (fullWidth) return `${base}--full-width`;
-    return "";
+    return '';
   };
 
   const className = `${base} ${getDirectionModifier()} ${getFullWidthModifier()} ${base}--spacing--${space}`;

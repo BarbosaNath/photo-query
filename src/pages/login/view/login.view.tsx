@@ -1,10 +1,10 @@
-import Card from "@components/card";
-import Stack from "@components/stack";
-import Text from "@components/text";
-import LoginForm from "../components/login-form";
-import RegisterForm from "../components/register-form";
-import { LoginViewProps } from "../types";
-import CenterLayout from "@components/center-layout";
+import Card from '@components/card';
+import Stack from '@components/stack';
+import Text from '@components/text';
+import LoginForm from '../components/login-form';
+import RegisterForm from '../components/register-form';
+import { LoginViewProps } from '../types';
+import CenterLayout from '@components/center-layout';
 
 export default function Login({
   registerFormProps,

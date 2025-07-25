@@ -1,6 +1,6 @@
-import sqlite from "better-sqlite3";
+import sqlite from 'better-sqlite3';
 
-const db = sqlite("src/db/database.db", { verbose: console.log });
+const db = sqlite('src/db/database.db', { verbose: console.log });
 
 export function addProduct({
   name,
@@ -280,16 +280,16 @@ export function filterProductsByMultipleCriteria({
   const params: (string | number)[] = [];
 
   if (categoryId !== undefined) {
-    query += " AND p.category_id = ?";
+    query += ' AND p.category_id = ?';
     params.push(categoryId);
   }
 
   if (characteristicId && characteristicId.length > 0) {
-    query += ` AND pc.characteristic_id IN (${characteristicId.map(() => "?").join(", ")})`;
+    query += ` AND pc.characteristic_id IN (${characteristicId.map(() => '?').join(', ')})`;
     params.push(...characteristicId);
   }
   if (subcharacteristicId && subcharacteristicId.length > 0) {
-    query += ` AND pc.subcharacteristic_id IN (${subcharacteristicId.map(() => "?").join(", ")})`;
+    query += ` AND pc.subcharacteristic_id IN (${subcharacteristicId.map(() => '?').join(', ')})`;
     params.push(...subcharacteristicId);
   }
 

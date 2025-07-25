@@ -1,13 +1,13 @@
-import { createElement } from "react";
-import "./text.css";
-import { TextProps } from "./types";
-import removeSpaces from "@utils/remove-spaces";
+import { createElement } from 'react';
+import './text.css';
+import { TextProps } from './types';
+import removeSpaces from '@utils/remove-spaces';
 
 export default function Text({
   children,
-  as: element = "p",
-  size = "md",
-  weight = "regular",
+  as: element = 'p',
+  size = 'md',
+  weight = 'regular',
   center,
   htmlFor,
   success,
@@ -18,7 +18,7 @@ export default function Text({
   onBrand,
   justify,
 }: TextProps) {
-  const base = "lds--text";
+  const base = 'lds--text';
 
   const getColorModifier = () => {
     if (success) return `${base}--success`;
@@ -32,12 +32,12 @@ export default function Text({
 
   const getCenterModifier = () => {
     if (center) return `${base}--center`;
-    return "";
+    return '';
   };
 
   const getJustifyModifier = () => {
     if (justify) return `${base}--justify`;
-    return "";
+    return '';
   };
 
   const className = removeSpaces(

@@ -1,31 +1,31 @@
-import { createElement, useCallback } from "react";
-import { IconButtonProps } from "./types";
-import removeSpaces from "@utils/remove-spaces";
-import "./icon-button.css";
+import { createElement, useCallback } from 'react';
+import { IconButtonProps } from './types';
+import removeSpaces from '@utils/remove-spaces';
+import './icon-button.css';
 
 export default function IconButton({
   icon,
   primary,
   active,
-  className = "",
+  className = '',
   children,
   link,
   ...rest
 }: IconButtonProps) {
-  const classNameBase = "lds--icon-button";
+  const classNameBase = 'lds--icon-button';
 
   const getPrimaryModifier = useCallback(() => {
     if (primary) return `${classNameBase}--primary`;
-    return "";
+    return '';
   }, [primary]);
 
   const getActiveModifier = useCallback(() => {
     if (active) return `${classNameBase}--active`;
-    return "";
+    return '';
   }, [active]);
 
   return createElement(
-    link ? "a" : "button",
+    link ? 'a' : 'button',
     {
       className: removeSpaces(
         `${classNameBase} ${getPrimaryModifier()} ${getActiveModifier()} ${className}`,

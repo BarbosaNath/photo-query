@@ -24,7 +24,7 @@
 
 /* placeholder option */
 .lds--select select:invalid,
-.lds--select select > option[value=""] {
+.lds--select select > option[value=''] {
   color: var(--lds-text-color-tertiary);
 }
 

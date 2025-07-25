@@ -1,8 +1,8 @@
-import Card from "@components/card";
-import Text from "@components/text";
-import Stack from "@components/stack";
-import { PencilIcon, TrashIcon } from "lucide-react";
-import { RowCardProps } from "./types";
+import Card from '@components/card';
+import Text from '@components/text';
+import Stack from '@components/stack';
+import { PencilIcon, TrashIcon } from 'lucide-react';
+import { RowCardProps } from './types';
 
 export default function RowCard({
   title,
@@ -15,7 +15,7 @@ export default function RowCard({
         padding="lg"
         radius="md"
         fullWidth
-        style={{ userSelect: "none", cursor: "default" }}
+        style={{ userSelect: 'none', cursor: 'default' }}
       >
         <Text weight="medium" size="md">
           {title}
@@ -27,7 +27,7 @@ export default function RowCard({
           padding="lg"
           radius="md"
           onClick={handleRemove}
-          style={{ userSelect: "none", cursor: "pointer" }}
+          style={{ userSelect: 'none', cursor: 'pointer' }}
         >
           <TrashIcon size={16} />
         </Card>
@@ -38,7 +38,7 @@ export default function RowCard({
           padding="lg"
           radius="md"
           onClick={handleEdit}
-          style={{ userSelect: "none", cursor: "pointer" }}
+          style={{ userSelect: 'none', cursor: 'pointer' }}
         >
           <PencilIcon size={16} />
         </Card>

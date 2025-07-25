@@ -1,5 +1,5 @@
-import { Sector } from "recharts";
-import { PieSectorDataItem } from "recharts/types/polar/Pie";
+import { Sector } from 'recharts';
+import { PieSectorDataItem } from 'recharts/types/polar/Pie';
 
 export default function PieChartActiveShape({
   cx,
@@ -23,7 +23,7 @@ export default function PieChartActiveShape({
   const my = (cy ?? 0) + ((outerRadius ?? 0) + 30) * sin;
   const ex = mx + (cos >= 0 ? 1 : -1) * 22;
   const ey = my;
-  const textAnchor = cos >= 0 ? "start" : "end";
+  const textAnchor = cos >= 0 ? 'start' : 'end';
 
   return (
     <g>

@@ -1,4 +1,4 @@
-import { Characteristic } from "@utils/dtos";
+import { Characteristic } from '@utils/dtos';
 
 export interface CharacteristicProps {
   characteristics: Array<Characteristic>;

@@ -1,11 +1,11 @@
-import Button from "@components/button";
-import ButtonLayout from "@components/button-layout";
-import Input from "@components/input";
-import Stack from "@components/stack";
-import { CustomStackAsProp } from "@components/stack/types";
-import Text from "@components/text";
-import { LoginFormProps } from "@pages/login/types";
-import { useCallback } from "react";
+import Button from '@components/button';
+import ButtonLayout from '@components/button-layout';
+import Input from '@components/input';
+import Stack from '@components/stack';
+import { CustomStackAsProp } from '@components/stack/types';
+import Text from '@components/text';
+import { LoginFormProps } from '@pages/login/types';
+import { useCallback } from 'react';
 
 export default function LoginForm({
   isLoading,
@@ -43,7 +43,7 @@ export default function LoginForm({
           type="email"
           value={userLoginBody.email}
           placeholder="digite seu email"
-          onChange={(event) => handleChange("email", event.target.value)}
+          onChange={(event) => handleChange('email', event.target.value)}
         />
 
         <Input
@@ -52,7 +52,7 @@ export default function LoginForm({
           type="password"
           value={userLoginBody.password}
           placeholder="informe sua senha"
-          onChange={(event) => handleChange("password", event.target.value)}
+          onChange={(event) => handleChange('password', event.target.value)}
         />
 
         {Boolean(errorMessage) && <Text>{errorMessage}</Text>}
@@ -62,7 +62,7 @@ export default function LoginForm({
         column
         primaryButton={
           <Button primary type="submit" disabled={isLoading}>
-            {isLoading ? "Carregando..." : "Login"}
+            {isLoading ? 'Carregando...' : 'Login'}
           </Button>
         }
         secondaryButton={

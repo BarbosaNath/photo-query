@@ -1,6 +1,6 @@
-import Text from "@components/text";
-import "./select.css";
-import { SelectBaseProps, SelectProps } from "./types";
+import Text from '@components/text';
+import './select.css';
+import { SelectBaseProps, SelectProps } from './types';
 
 function SelectBase({
   placeholder,
@@ -33,7 +33,7 @@ function SelectBase({
 }
 
 export default function Select({ label, ...selectBaseProps }: SelectProps) {
-  const base = "lds--select";
+  const base = 'lds--select';
 
   return (
     <div className={base}>

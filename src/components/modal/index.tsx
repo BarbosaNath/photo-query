@@ -1,12 +1,12 @@
-import { ModalProps } from "./types";
-import "./modal.css";
+import { ModalProps } from './types';
+import './modal.css';
 
 export default function Modal({
   children,
   isOpen,
   onClose: handleClose,
 }: ModalProps) {
-  const baseClassname = "lds--modal";
+  const baseClassname = 'lds--modal';
 
   if (!isOpen) return null;
 

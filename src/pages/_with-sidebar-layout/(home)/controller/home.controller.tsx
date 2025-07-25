@@ -1,8 +1,8 @@
-import Home from "../view/home.view";
-import { Route } from "..";
+import Home from '../view/home.view';
+import { Route } from '..';
 
 export default function HomeController() {
   const products = Route.useLoaderData();
-  console.log("Products:", products);
+  console.log('Products:', products);
   return <Home products={products} />;
 }

@@ -1,11 +1,11 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren } from 'react';
 
 export interface PrimaryButtonProps extends PropsWithChildren {
   primary: true;
   secondary?: never;
   onClick: () => void;
   fake?: never;
-  type?: "button";
+  type?: 'button';
   disabled?: boolean;
   link?: never;
   href?: never;
@@ -17,7 +17,7 @@ export interface PrimaryFormButtonProps extends PropsWithChildren {
   secondary?: never;
   onClick?: never;
   fake?: never;
-  type: "submit" | "reset";
+  type: 'submit' | 'reset';
   disabled?: boolean;
   link?: never;
   href?: never;
@@ -29,7 +29,7 @@ export interface SecondaryButtonProps extends PropsWithChildren {
   secondary: true;
   onClick: () => void;
   fake?: never;
-  type?: "button";
+  type?: 'button';
   disabled?: boolean;
   link?: never;
   href?: never;
@@ -41,7 +41,7 @@ export interface SecondaryFormButtonProps extends PropsWithChildren {
   secondary: true;
   onClick?: never;
   fake?: never;
-  type: "submit" | "reset";
+  type: 'submit' | 'reset';
   disabled?: boolean;
   link?: never;
   href?: never;
@@ -57,7 +57,7 @@ interface LinkButtonOnClickProps extends PropsWithChildren {
   type?: never;
   disabled?: never;
   href?: never;
-  target?: "_blank" | "_self" | "_parent" | "_top";
+  target?: '_blank' | '_self' | '_parent' | '_top';
 }
 
 interface LinkButtonHrefProps extends PropsWithChildren {
@@ -69,7 +69,7 @@ interface LinkButtonHrefProps extends PropsWithChildren {
   type?: never;
   disabled?: never;
   href: string;
-  target?: "_blank" | "_self" | "_parent" | "_top";
+  target?: '_blank' | '_self' | '_parent' | '_top';
 }
 
 export interface FakeButtonProps extends PropsWithChildren {

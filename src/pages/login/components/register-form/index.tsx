@@ -1,11 +1,11 @@
-import Button from "@components/button";
-import ButtonLayout from "@components/button-layout";
-import Input from "@components/input";
-import Stack from "@components/stack";
-import { CustomStackAsProp } from "@components/stack/types";
-import Text from "@components/text";
-import { RegisterFormProps } from "@pages/login/types";
-import { useCallback } from "react";
+import Button from '@components/button';
+import ButtonLayout from '@components/button-layout';
+import Input from '@components/input';
+import Stack from '@components/stack';
+import { CustomStackAsProp } from '@components/stack/types';
+import Text from '@components/text';
+import { RegisterFormProps } from '@pages/login/types';
+import { useCallback } from 'react';
 
 export default function RegisterForm({
   isLoading,
@@ -41,7 +41,7 @@ export default function RegisterForm({
           label="Nome"
           placeholder="seu nome"
           value={userRegisterBody.name}
-          onChange={(e) => handleChange("name", e.target.value)}
+          onChange={(e) => handleChange('name', e.target.value)}
         />
 
         <Input
@@ -50,7 +50,7 @@ export default function RegisterForm({
           type="email"
           placeholder="digite seu email"
           value={userRegisterBody.email}
-          onChange={(e) => handleChange("email", e.target.value)}
+          onChange={(e) => handleChange('email', e.target.value)}
         />
 
         <Input
@@ -59,7 +59,7 @@ export default function RegisterForm({
           type="password"
           placeholder="crie uma senha"
           value={userRegisterBody.password}
-          onChange={(e) => handleChange("password", e.target.value)}
+          onChange={(e) => handleChange('password', e.target.value)}
         />
 
         {Boolean(errorMessage) && <Text>{errorMessage}</Text>}
@@ -70,7 +70,7 @@ export default function RegisterForm({
         primaryButton={
           <Stack align="stretch">
             <Button primary type="submit" disabled={isLoading}>
-              {isLoading ? "Carregando..." : "Submit"}
+              {isLoading ? 'Carregando...' : 'Submit'}
             </Button>
           </Stack>
         }

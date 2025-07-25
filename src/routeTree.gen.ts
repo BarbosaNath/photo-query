@@ -10,84 +10,84 @@
 
 // Import Routes
 
-import { Route as rootRoute } from "./pages/__root";
-import { Route as WithSidebarLayoutLayoutImport } from "./pages/_with-sidebar-layout/layout";
-import { Route as LoginIndexImport } from "./pages/login/index";
-import { Route as WithSidebarLayoutCharacteristicsIndexImport } from "./pages/_with-sidebar-layout/characteristics/index";
-import { Route as WithSidebarLayoutCategoriesIndexImport } from "./pages/_with-sidebar-layout/categories/index";
-import { Route as WithSidebarLayouthomeIndexImport } from "./pages/_with-sidebar-layout/(home)/index";
+import { Route as rootRoute } from './pages/__root';
+import { Route as WithSidebarLayoutLayoutImport } from './pages/_with-sidebar-layout/layout';
+import { Route as LoginIndexImport } from './pages/login/index';
+import { Route as WithSidebarLayoutCharacteristicsIndexImport } from './pages/_with-sidebar-layout/characteristics/index';
+import { Route as WithSidebarLayoutCategoriesIndexImport } from './pages/_with-sidebar-layout/categories/index';
+import { Route as WithSidebarLayouthomeIndexImport } from './pages/_with-sidebar-layout/(home)/index';
 
 // Create/Update Routes
 
 const WithSidebarLayoutLayoutRoute = WithSidebarLayoutLayoutImport.update({
-  id: "/_with-sidebar-layout",
+  id: '/_with-sidebar-layout',
   getParentRoute: () => rootRoute,
 } as any);
 
 const LoginIndexRoute = LoginIndexImport.update({
-  id: "/login/",
-  path: "/login/",
+  id: '/login/',
+  path: '/login/',
   getParentRoute: () => rootRoute,
 } as any);
 
 const WithSidebarLayoutCharacteristicsIndexRoute =
   WithSidebarLayoutCharacteristicsIndexImport.update({
-    id: "/characteristics/",
-    path: "/characteristics/",
+    id: '/characteristics/',
+    path: '/characteristics/',
     getParentRoute: () => WithSidebarLayoutLayoutRoute,
   } as any);
 
 const WithSidebarLayoutCategoriesIndexRoute =
   WithSidebarLayoutCategoriesIndexImport.update({
-    id: "/categories/",
-    path: "/categories/",
+    id: '/categories/',
+    path: '/categories/',
     getParentRoute: () => WithSidebarLayoutLayoutRoute,
   } as any);
 
 const WithSidebarLayouthomeIndexRoute = WithSidebarLayouthomeIndexImport.update(
   {
-    id: "/(home)/",
-    path: "/",
+    id: '/(home)/',
+    path: '/',
     getParentRoute: () => WithSidebarLayoutLayoutRoute,
   } as any,
 );
 
 // Populate the FileRoutesByPath interface
 
-declare module "@tanstack/react-router" {
+declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    "/_with-sidebar-layout": {
-      id: "/_with-sidebar-layout";
-      path: "";
-      fullPath: "";
+    '/_with-sidebar-layout': {
+      id: '/_with-sidebar-layout';
+      path: '';
+      fullPath: '';
       preLoaderRoute: typeof WithSidebarLayoutLayoutImport;
       parentRoute: typeof rootRoute;
     };
-    "/login/": {
-      id: "/login/";
-      path: "/login";
-      fullPath: "/login";
+    '/login/': {
+      id: '/login/';
+      path: '/login';
+      fullPath: '/login';
       preLoaderRoute: typeof LoginIndexImport;
       parentRoute: typeof rootRoute;
     };
-    "/_with-sidebar-layout/(home)/": {
-      id: "/_with-sidebar-layout/(home)/";
-      path: "/";
-      fullPath: "/";
+    '/_with-sidebar-layout/(home)/': {
+      id: '/_with-sidebar-layout/(home)/';
+      path: '/';
+      fullPath: '/';
       preLoaderRoute: typeof WithSidebarLayouthomeIndexImport;
       parentRoute: typeof WithSidebarLayoutLayoutImport;
     };
-    "/_with-sidebar-layout/categories/": {
-      id: "/_with-sidebar-layout/categories/";
-      path: "/categories";
-      fullPath: "/categories";
+    '/_with-sidebar-layout/categories/': {
+      id: '/_with-sidebar-layout/categories/';
+      path: '/categories';
+      fullPath: '/categories';
       preLoaderRoute: typeof WithSidebarLayoutCategoriesIndexImport;
       parentRoute: typeof WithSidebarLayoutLayoutImport;
     };
-    "/_with-sidebar-layout/characteristics/": {
-      id: "/_with-sidebar-layout/characteristics/";
-      path: "/characteristics";
-      fullPath: "/characteristics";
+    '/_with-sidebar-layout/characteristics/': {
+      id: '/_with-sidebar-layout/characteristics/';
+      path: '/characteristics';
+      fullPath: '/characteristics';
       preLoaderRoute: typeof WithSidebarLayoutCharacteristicsIndexImport;
       parentRoute: typeof WithSidebarLayoutLayoutImport;
     };
@@ -117,41 +117,41 @@ const WithSidebarLayoutLayoutRouteWithChildren =
   );
 
 export interface FileRoutesByFullPath {
-  "": typeof WithSidebarLayoutLayoutRouteWithChildren;
-  "/login": typeof LoginIndexRoute;
-  "/": typeof WithSidebarLayouthomeIndexRoute;
-  "/categories": typeof WithSidebarLayoutCategoriesIndexRoute;
-  "/characteristics": typeof WithSidebarLayoutCharacteristicsIndexRoute;
+  '': typeof WithSidebarLayoutLayoutRouteWithChildren;
+  '/login': typeof LoginIndexRoute;
+  '/': typeof WithSidebarLayouthomeIndexRoute;
+  '/categories': typeof WithSidebarLayoutCategoriesIndexRoute;
+  '/characteristics': typeof WithSidebarLayoutCharacteristicsIndexRoute;
 }
 
 export interface FileRoutesByTo {
-  "/login": typeof LoginIndexRoute;
-  "/": typeof WithSidebarLayouthomeIndexRoute;
-  "/categories": typeof WithSidebarLayoutCategoriesIndexRoute;
-  "/characteristics": typeof WithSidebarLayoutCharacteristicsIndexRoute;
+  '/login': typeof LoginIndexRoute;
+  '/': typeof WithSidebarLayouthomeIndexRoute;
+  '/categories': typeof WithSidebarLayoutCategoriesIndexRoute;
+  '/characteristics': typeof WithSidebarLayoutCharacteristicsIndexRoute;
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute;
-  "/_with-sidebar-layout": typeof WithSidebarLayoutLayoutRouteWithChildren;
-  "/login/": typeof LoginIndexRoute;
-  "/_with-sidebar-layout/(home)/": typeof WithSidebarLayouthomeIndexRoute;
-  "/_with-sidebar-layout/categories/": typeof WithSidebarLayoutCategoriesIndexRoute;
-  "/_with-sidebar-layout/characteristics/": typeof WithSidebarLayoutCharacteristicsIndexRoute;
+  '/_with-sidebar-layout': typeof WithSidebarLayoutLayoutRouteWithChildren;
+  '/login/': typeof LoginIndexRoute;
+  '/_with-sidebar-layout/(home)/': typeof WithSidebarLayouthomeIndexRoute;
+  '/_with-sidebar-layout/categories/': typeof WithSidebarLayoutCategoriesIndexRoute;
+  '/_with-sidebar-layout/characteristics/': typeof WithSidebarLayoutCharacteristicsIndexRoute;
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: "" | "/login" | "/" | "/categories" | "/characteristics";
+  fullPaths: '' | '/login' | '/' | '/categories' | '/characteristics';
   fileRoutesByTo: FileRoutesByTo;
-  to: "/login" | "/" | "/categories" | "/characteristics";
+  to: '/login' | '/' | '/categories' | '/characteristics';
   id:
-    | "__root__"
-    | "/_with-sidebar-layout"
-    | "/login/"
-    | "/_with-sidebar-layout/(home)/"
-    | "/_with-sidebar-layout/categories/"
-    | "/_with-sidebar-layout/characteristics/";
+    | '__root__'
+    | '/_with-sidebar-layout'
+    | '/login/'
+    | '/_with-sidebar-layout/(home)/'
+    | '/_with-sidebar-layout/categories/'
+    | '/_with-sidebar-layout/characteristics/';
   fileRoutesById: FileRoutesById;
 }
 
