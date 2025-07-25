@@ -13,6 +13,7 @@
 import { Route as rootRoute } from "./pages/__root";
 import { Route as WithSidebarLayoutLayoutImport } from "./pages/_with-sidebar-layout/layout";
 import { Route as LoginIndexImport } from "./pages/login/index";
+import { Route as WithSidebarLayoutCharacteristicsIndexImport } from "./pages/_with-sidebar-layout/characteristics/index";
 import { Route as WithSidebarLayoutCategoriesIndexImport } from "./pages/_with-sidebar-layout/categories/index";
 import { Route as WithSidebarLayouthomeIndexImport } from "./pages/_with-sidebar-layout/(home)/index";
 
@@ -28,6 +29,13 @@ const LoginIndexRoute = LoginIndexImport.update({
   path: "/login/",
   getParentRoute: () => rootRoute,
 } as any);
+
+const WithSidebarLayoutCharacteristicsIndexRoute =
+  WithSidebarLayoutCharacteristicsIndexImport.update({
+    id: "/characteristics/",
+    path: "/characteristics/",
+    getParentRoute: () => WithSidebarLayoutLayoutRoute,
+  } as any);
 
 const WithSidebarLayoutCategoriesIndexRoute =
   WithSidebarLayoutCategoriesIndexImport.update({
@@ -76,6 +84,13 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof WithSidebarLayoutCategoriesIndexImport;
       parentRoute: typeof WithSidebarLayoutLayoutImport;
     };
+    "/_with-sidebar-layout/characteristics/": {
+      id: "/_with-sidebar-layout/characteristics/";
+      path: "/characteristics";
+      fullPath: "/characteristics";
+      preLoaderRoute: typeof WithSidebarLayoutCharacteristicsIndexImport;
+      parentRoute: typeof WithSidebarLayoutLayoutImport;
+    };
   }
 }
 
@@ -84,6 +99,7 @@ declare module "@tanstack/react-router" {
 interface WithSidebarLayoutLayoutRouteChildren {
   WithSidebarLayouthomeIndexRoute: typeof WithSidebarLayouthomeIndexRoute;
   WithSidebarLayoutCategoriesIndexRoute: typeof WithSidebarLayoutCategoriesIndexRoute;
+  WithSidebarLayoutCharacteristicsIndexRoute: typeof WithSidebarLayoutCharacteristicsIndexRoute;
 }
 
 const WithSidebarLayoutLayoutRouteChildren: WithSidebarLayoutLayoutRouteChildren =
@@ -91,6 +107,8 @@ const WithSidebarLayoutLayoutRouteChildren: WithSidebarLayoutLayoutRouteChildren
     WithSidebarLayouthomeIndexRoute: WithSidebarLayouthomeIndexRoute,
     WithSidebarLayoutCategoriesIndexRoute:
       WithSidebarLayoutCategoriesIndexRoute,
+    WithSidebarLayoutCharacteristicsIndexRoute:
+      WithSidebarLayoutCharacteristicsIndexRoute,
   };
 
 const WithSidebarLayoutLayoutRouteWithChildren =
@@ -103,12 +121,14 @@ export interface FileRoutesByFullPath {
   "/login": typeof LoginIndexRoute;
   "/": typeof WithSidebarLayouthomeIndexRoute;
   "/categories": typeof WithSidebarLayoutCategoriesIndexRoute;
+  "/characteristics": typeof WithSidebarLayoutCharacteristicsIndexRoute;
 }
 
 export interface FileRoutesByTo {
   "/login": typeof LoginIndexRoute;
   "/": typeof WithSidebarLayouthomeIndexRoute;
   "/categories": typeof WithSidebarLayoutCategoriesIndexRoute;
+  "/characteristics": typeof WithSidebarLayoutCharacteristicsIndexRoute;
 }
 
 export interface FileRoutesById {
@@ -117,19 +137,21 @@ export interface FileRoutesById {
   "/login/": typeof LoginIndexRoute;
   "/_with-sidebar-layout/(home)/": typeof WithSidebarLayouthomeIndexRoute;
   "/_with-sidebar-layout/categories/": typeof WithSidebarLayoutCategoriesIndexRoute;
+  "/_with-sidebar-layout/characteristics/": typeof WithSidebarLayoutCharacteristicsIndexRoute;
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: "" | "/login" | "/" | "/categories";
+  fullPaths: "" | "/login" | "/" | "/categories" | "/characteristics";
   fileRoutesByTo: FileRoutesByTo;
-  to: "/login" | "/" | "/categories";
+  to: "/login" | "/" | "/categories" | "/characteristics";
   id:
     | "__root__"
     | "/_with-sidebar-layout"
     | "/login/"
     | "/_with-sidebar-layout/(home)/"
-    | "/_with-sidebar-layout/categories/";
+    | "/_with-sidebar-layout/categories/"
+    | "/_with-sidebar-layout/characteristics/";
   fileRoutesById: FileRoutesById;
 }
 
@@ -161,7 +183,8 @@ export const routeTree = rootRoute
       "filePath": "_with-sidebar-layout/layout.tsx",
       "children": [
         "/_with-sidebar-layout/(home)/",
-        "/_with-sidebar-layout/categories/"
+        "/_with-sidebar-layout/categories/",
+        "/_with-sidebar-layout/characteristics/"
       ]
     },
     "/login/": {
@@ -173,6 +196,10 @@ export const routeTree = rootRoute
     },
     "/_with-sidebar-layout/categories/": {
       "filePath": "_with-sidebar-layout/categories/index.tsx",
+      "parent": "/_with-sidebar-layout"
+    },
+    "/_with-sidebar-layout/characteristics/": {
+      "filePath": "_with-sidebar-layout/characteristics/index.tsx",
       "parent": "/_with-sidebar-layout"
     }
   }

@@ -11,7 +11,11 @@ declare global {
           | "get-categories"
           | "add-category"
           | "remove-category"
-          | "update-category",
+          | "update-category"
+          | "add-characteristic"
+          | "get-characteristics"
+          | "update-characteristic"
+          | "remove-characteristic",
         data?:
           | GetProductsData
           | AddProductData

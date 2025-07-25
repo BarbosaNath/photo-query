@@ -73,6 +73,14 @@
   }
 
   .lds--sidebar__main-items :nth-child(3) {
+    order: 1;
+  }
+
+  .lds--sidebar__main-items :nth-child(4) {
+    order: 3;
+  }
+
+  .lds--sidebar__main-items :nth-child(5) {
     order: 3;
   }
 

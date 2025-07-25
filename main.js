@@ -12,6 +12,12 @@ import {
   getAllCategories,
   updateCategoryName,
 } from "./src/services/category/index.js";
+import {
+  addCharacteristic,
+  deleteCharacteristic,
+  getAllCharacteristics,
+  updateCharacteristicName,
+} from "./src/services/characteristic/index.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -65,4 +71,20 @@ ipcMain.handle("remove-category", (_event, body) => {
 
 ipcMain.handle("update-category", (_event, body) => {
   return updateCategoryName(body);
+});
+
+ipcMain.handle("get-characteristics", (_event, body) => {
+  return getAllCharacteristics(body);
+});
+
+ipcMain.handle("add-characteristic", (_event, body) => {
+  return addCharacteristic(body);
+});
+
+ipcMain.handle("remove-characteristic", (_event, body) => {
+  return deleteCharacteristic(body);
+});
+
+ipcMain.handle("update-characteristic", (_event, body) => {
+  return updateCharacteristicName(body);
 });
