@@ -1,4 +1,4 @@
-import { Category } from '@utils/dtos';
+import { Category } from "@utils/dtos";
 
 export interface CategoryProps {
   categories: Array<Category>;
@@ -6,8 +6,8 @@ export interface CategoryProps {
   errorMessage: string;
   handleChangeSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleAddCategory: (name: string) => void;
-  handleRemoveCategory: (id: string) => void;
-  handleEditCategory: (id: string) => void;
+  handleRemoveCategory: (id: number) => void;
+  handleEditCategory: (id: number) => void;
 }
 
 export interface CategoryRowProps {

@@ -6,13 +6,18 @@ declare global {
     electronAPI: {
       invoke: <T = unknown>(
         channel:
-          | 'get-products'
-          | 'add-product'
-          | 'get-categories'
-          | 'add-category'
-          | 'remove-category'
-          | 'edit-category',
-        data?: GetProductsData | AddProductData | AddCategoryData | never
+          | "get-products"
+          | "add-product"
+          | "get-categories"
+          | "add-category"
+          | "remove-category"
+          | "edit-category",
+        data?:
+          | GetProductsData
+          | AddProductData
+          | AddCategoryData
+          | RemoveByIdData
+          | never,
       ) => Promise<T>;
     };
   }
@@ -30,4 +35,8 @@ interface AddProductData {
 
 interface AddCategoryData {
   name: string;
+}
+
+interface RemoveByIdData {
+  id: number;
 }

@@ -1,6 +1,6 @@
-import sqlite from 'better-sqlite3';
+import sqlite from "better-sqlite3";
 
-const db = sqlite('src/db/database.db', { verbose: console.log });
+const db = sqlite("src/db/database.db", { verbose: console.log });
 
 export function addCategory({ name }) {
   const insertCategorySQL = `
@@ -26,11 +26,11 @@ export function updateCategoryName({ id, newName }) {
   db.prepare(updateCategorySQL).run(newName, id);
 }
 
-export function deleteCategory(id) {
+export function deleteCategory({ id }) {
   const deleteCategorySQL = `
         DELETE FROM categories WHERE id = ?;
     `;
-  db.prepare(deleteCategorySQL).run(id);
+  return db.prepare(deleteCategorySQL).run(id);
 }
 
 export function getAllCategories() {

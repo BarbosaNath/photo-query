@@ -1,11 +1,11 @@
-import Button from '@components/button';
-import CenterLayout from '@components/center-layout';
-import Input from '@components/input';
-import Stack from '@components/stack';
-import { PlusIcon } from 'lucide-react';
-import CategoryRow from '../components/category-row';
-import { CategoryProps } from '../types';
-import Text from '@components/text';
+import Button from "@components/button";
+import CenterLayout from "@components/center-layout";
+import Input from "@components/input";
+import Stack from "@components/stack";
+import { PlusIcon } from "lucide-react";
+import CategoryRow from "../components/category-row";
+import { CategoryProps } from "../types";
+import Text from "@components/text";
 
 export default function Categories({
   categories,
@@ -30,7 +30,11 @@ export default function Categories({
           </Button>
         </Stack>
 
-        {Boolean(errorMessage) && <Text>{errorMessage}</Text>}
+        {Boolean(errorMessage) && (
+          <Text error size="xs">
+            {errorMessage}
+          </Text>
+        )}
 
         <Stack>
           {categories.map((category) => (
