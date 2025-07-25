@@ -13,7 +13,7 @@ export function addProduct({
         INSERT INTO products (name, category_id)
         VALUES (?, ?);
     `;
-  db.prepare(insertProductSQL).run(name, categoryId);
+  return db.prepare(insertProductSQL).run(name, categoryId);
 }
 
 export function getProductByName(name: string) {

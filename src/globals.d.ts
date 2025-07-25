@@ -4,22 +4,45 @@ export {};
 declare global {
   interface Window {
     electronAPI: {
-      invoke: InvokeFilterProduct;
+      invoke: <T = unknown>(
+        channel:
+          | "get-products"
+          | "add-product"
+          | "get-categories"
+          | "add-category"
+          | "remove-category"
+          | "update-category",
+        data?:
+          | GetProductsData
+          | AddProductData
+          | AddCategoryData
+          | ActByIdData
+          | UpdateCategoryNameData
+          | never,
+      ) => Promise<T>;
     };
   }
 }
 
-type InvokeFilterProduct = (
-  channel: "get-products",
-  data?: {
-    categoryId?: number;
-    characteristics?: { id?: number; subId?: number }[];
-  },
-) => Promise<
-  {
-    id: number;
-    name: string;
-    created_at: string;
-    updated_at: string;
-  }[]
->;
+interface GetProductsData {
+  categoryId?: number;
+  characteristics?: { id?: number; subId?: number }[];
+}
+
+interface AddProductData {
+  name: string;
+  categoryId: number;
+}
+
+interface AddCategoryData {
+  name: string;
+}
+
+interface ActByIdData {
+  id: number;
+}
+
+interface UpdateCategoryNameData {
+  id: number;
+  newName: string;
+}

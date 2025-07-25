@@ -5,21 +5,21 @@ import Stack from "@components/stack";
 import { PlusIcon, HomeIcon, LayersIcon } from "lucide-react";
 import { useCallback, useState } from "react";
 import "./sidebar.css";
-import Card from "@components/card";
+import AddProductForm from "@components/add-product-form";
 
 export default function Sidebar() {
-  const [isAddTransactionOpen, setIsAddTransactionOpen] = useState(false);
+  const [isAddProductOpen, setIsAddProductOpen] = useState(false);
 
   const baseClass = "lds--sidebar";
 
-  const handleToggleAddTransaction = useCallback(() => {
-    setIsAddTransactionOpen((previousIsOpen) => !previousIsOpen);
+  const handleToggleAddProduct = useCallback(() => {
+    setIsAddProductOpen((previousIsOpen) => !previousIsOpen);
   }, []);
 
   return (
     <>
-      <Modal isOpen={isAddTransactionOpen} onClose={handleToggleAddTransaction}>
-        <Card />
+      <Modal isOpen={isAddProductOpen} onClose={handleToggleAddProduct}>
+        <AddProductForm onClose={handleToggleAddProduct} />
       </Modal>
 
       <Stack
@@ -33,9 +33,9 @@ export default function Sidebar() {
           <IconButton
             primary
             icon={<PlusIcon />}
-            onClick={handleToggleAddTransaction}
+            onClick={handleToggleAddProduct}
           >
-            Adicionar Transação
+            Adicionar Produto
           </IconButton>
 
           <IconLink icon={<HomeIcon />} to="/">
