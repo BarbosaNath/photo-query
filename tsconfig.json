@@ -32,6 +32,11 @@
     "skipLibCheck": true,
     "incremental": true
   },
-  "include": ["./**/*.ts", "./**/*.css", "./**/*.tsx"],
+  "include": [
+    "./**/*.ts",
+    "./**/*.css",
+    "./**/*.tsx",
+    "src/services/characteristic/index.js"
+  ],
   "exclude": ["node_modules", "dist"]
 }

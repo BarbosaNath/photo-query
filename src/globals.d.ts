@@ -13,15 +13,18 @@ declare global {
           | 'remove-category'
           | 'update-category'
           | 'add-characteristic'
+          | 'get-characteristic'
           | 'get-characteristics'
           | 'update-characteristic'
-          | 'remove-characteristic',
+          | 'remove-characteristic'
+          | 'get-subcharacteristics',
         data?:
           | GetProductsData
           | AddProductData
           | AddCategoryData
           | ActByIdData
           | UpdateCategoryNameData
+          | GetSubcharacteristicsData
           | never,
       ) => Promise<T>;
     };
@@ -49,4 +52,8 @@ interface ActByIdData {
 interface UpdateCategoryNameData {
   id: number;
   newName: string;
+}
+
+interface GetSubcharacteristicsData {
+  characteristicId: number;
 }

@@ -6,8 +6,9 @@ import { RowCardProps } from './types';
 
 export default function RowCard({
   title,
-  handleRemove,
-  handleEdit,
+  onRemove: handleRemove,
+  onEdit: handleEdit,
+  onClick: handleClick,
 }: RowCardProps) {
   return (
     <Stack direction="row" align="stretch" fullWidth space="sm">
@@ -15,7 +16,11 @@ export default function RowCard({
         padding="lg"
         radius="md"
         fullWidth
-        style={{ userSelect: 'none', cursor: 'default' }}
+        style={{
+          userSelect: 'none',
+          cursor: handleClick ? 'pointer' : 'default',
+        }}
+        onClick={handleClick}
       >
         <Text weight="medium" size="md">
           {title}

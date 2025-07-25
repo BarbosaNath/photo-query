@@ -57,14 +57,14 @@ export function getAllCharacteristics() {
   return db.prepare(getAllCharacteristicsSQL).all();
 }
 
-export function getCharacteristicById(id) {
+export function getCharacteristicById({ id }) {
   const getCharacteristicSQL = `
         SELECT * FROM characteristics WHERE id = ?;
     `;
   return db.prepare(getCharacteristicSQL).get(id);
 }
 
-export function getSubcharacteristicsByCharacteristicId(characteristicId) {
+export function getSubcharacteristicsByCharacteristicId({ characteristicId }) {
   const getSubcharacteristicsSQL = `
         SELECT * FROM subcharacteristics WHERE characteristic_id = ?;
     `;

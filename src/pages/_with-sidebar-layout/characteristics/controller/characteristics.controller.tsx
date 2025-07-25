@@ -14,6 +14,9 @@ export default function CategoriesController() {
     number | null
   >(null);
 
+  const [isCharacteristicDetailsOpen, setIsCharacteristicDetailsOpen] =
+    useState<boolean>(false);
+
   const handleChangeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setErrorMessage('');
     setSearchValue(event.target.value);
@@ -68,7 +71,7 @@ export default function CategoriesController() {
     }
   };
 
-  const handleEditCategory = async () => {
+  const handleEditCategory = async (newName: string) => {
     if (!editingCharacteristicId) {
       setErrorMessage('ID da característica não pode ser vazio.');
       return;
@@ -82,10 +85,10 @@ export default function CategoriesController() {
     try {
       await window.electronAPI.invoke('update-characteristic', {
         id: editingCharacteristicId,
-        newName: searchValue,
+        newName,
       });
       console.log(
-        `Característica com ID ${editingCharacteristicId} editada para: ${searchValue}`,
+        `Característica com ID ${editingCharacteristicId} editada para: ${newName}`,
       );
       setEditingCharacteristicId(null);
       setIsEditingCharacteristic(false);
@@ -98,6 +101,11 @@ export default function CategoriesController() {
     }
   };
 
+  const handleClickCharacteristic = (id?: number) => {
+    setIsCharacteristicDetailsOpen((prev) => !prev);
+    setEditingCharacteristicId(id ?? null);
+  };
+
   return (
     <Categories
       characteristics={characteristics.filter((characteristic) =>
@@ -106,6 +114,8 @@ export default function CategoriesController() {
       searchValue={searchValue}
       errorMessage={errorMessage}
       isEditingCharacteristic={isEditingCharacteristic}
+      isCharacteristicDetailsOpen={isCharacteristicDetailsOpen}
+      editingCharacteristicId={editingCharacteristicId}
       handleChangeSearch={handleChangeSearch}
       handleAddCharacteristic={handleAddCategory}
       handleRemoveCharacteristic={handleRemoveCategory}
@@ -114,6 +124,7 @@ export default function CategoriesController() {
         setIsEditingCharacteristic(!!id);
         setEditingCharacteristicId(id ?? null);
       }}
+      handleClickCharacteristic={handleClickCharacteristic}
     />
   );
 }

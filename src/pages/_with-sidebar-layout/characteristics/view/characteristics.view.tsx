@@ -5,21 +5,24 @@ import Stack from '@components/stack';
 import { PlusIcon } from 'lucide-react';
 import Text from '@components/text';
 import Modal from '@components/modal';
-import Card from '@components/card';
-import ButtonLayout from '@components/button-layout';
 import RowCard from '@components/row';
 import { CharacteristicProps } from '../types';
+import EditForm from '../components/edit-form';
+import CharacteristicDetails from '../components/characteristic-details';
 
 export default function Categories({
   characteristics,
   searchValue,
   errorMessage,
   isEditingCharacteristic,
+  editingCharacteristicId,
+  isCharacteristicDetailsOpen,
   handleChangeSearch,
   handleAddCharacteristic,
   handleRemoveCharacteristic,
   handleEditCharacteristic,
   handleToggleEditCharacteristic,
+  handleClickCharacteristic,
 }: CharacteristicProps) {
   return (
     <>
@@ -27,38 +30,22 @@ export default function Categories({
         isOpen={isEditingCharacteristic}
         onClose={() => handleToggleEditCharacteristic()}
       >
-        <Card>
-          <Stack space="xl" align="stretch" fullWidth>
-            <Text secondary size="lg" weight="bold">
-              Editar Característica
-            </Text>
-
-            <Input
-              label="Novo nome da característica"
-              placeholder="Digite o novo nome"
-              value={searchValue}
-              onChange={handleChangeSearch}
-            />
-
-            <ButtonLayout
-              fullWidth
-              primaryButton={
-                <Button primary onClick={() => handleEditCharacteristic()}>
-                  Salvar
-                </Button>
-              }
-              secondaryButton={
-                <Button
-                  secondary
-                  onClick={() => handleToggleEditCharacteristic()}
-                >
-                  Fechar
-                </Button>
-              }
-            />
-          </Stack>
-        </Card>
+        <EditForm
+          onClose={handleToggleEditCharacteristic}
+          onEditCharacteristic={handleEditCharacteristic}
+        />
       </Modal>
+
+      <Modal
+        isOpen={isCharacteristicDetailsOpen}
+        onClose={() => handleClickCharacteristic()}
+      >
+        <CharacteristicDetails
+          id={editingCharacteristicId ?? undefined}
+          onClose={handleClickCharacteristic}
+        />
+      </Modal>
+
       <CenterLayout title="Características" width={80} justify="start">
         <Stack fullWidth align="stretch" space="xxl">
           <Stack direction="row">
@@ -67,6 +54,7 @@ export default function Categories({
               value={searchValue}
               onChange={handleChangeSearch}
             />
+
             <Button
               primary
               onClick={() => handleAddCharacteristic(searchValue)}
@@ -86,12 +74,9 @@ export default function Categories({
               <RowCard
                 key={characteristic.name}
                 title={characteristic.name}
-                handleRemove={() =>
-                  handleRemoveCharacteristic(characteristic.id)
-                }
-                handleEdit={() =>
-                  handleToggleEditCharacteristic(characteristic.id)
-                }
+                onClick={() => handleClickCharacteristic(characteristic.id)}
+                onRemove={() => handleRemoveCharacteristic(characteristic.id)}
+                onEdit={() => handleToggleEditCharacteristic(characteristic.id)}
               />
             ))}
           </Stack>

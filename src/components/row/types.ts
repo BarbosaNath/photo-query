@@ -1,5 +1,6 @@
 export interface RowCardProps {
   title: string;
-  handleRemove?: () => void;
-  handleEdit?: () => void;
+  onRemove?: () => void;
+  onEdit?: () => void;
+  onClick?: () => void;
 }
