@@ -2,7 +2,11 @@ import { app, BrowserWindow, ipcMain } from "electron";
 import path from "node:path";
 import { fileURLToPath } from "url";
 import process from "node:process";
-import { filterProductsByMultipleCriteria } from "./src/services/product/index.js";
+import {
+  addProduct,
+  filterProductsByMultipleCriteria,
+} from "./src/services/product/index.js";
+import { getAllCategories } from "./src/services/category/index.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -36,4 +40,12 @@ app.on("activate", () => {
 
 ipcMain.handle("get-products", (_event, body) => {
   return filterProductsByMultipleCriteria(body);
+});
+
+ipcMain.handle("add-product", (_event, body) => {
+  return addProduct(body);
+});
+
+ipcMain.handle("get-categories", (_event, body) => {
+  return getAllCategories(body);
 });

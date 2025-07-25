@@ -7,7 +7,7 @@ export function addProduct({ name, categoryId }) {
         INSERT INTO products (name, category_id)
         VALUES (?, ?);
     `;
-  db.prepare(insertProductSQL).run(name, categoryId);
+  return db.prepare(insertProductSQL).run(name, categoryId);
 }
 
 export function getProductByName(name) {
@@ -97,8 +97,9 @@ export function filterProductsByMultipleCriteria(body) {
   const characteristics = body?.characteristics || [];
 
   let query = `
-        SELECT p.*
+        SELECT p.*, c.name AS category_name
         FROM products p
+        LEFT JOIN categories c ON p.category_id = c.id
     `;
 
   const params = [];
