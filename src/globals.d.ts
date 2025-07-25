@@ -5,8 +5,14 @@ declare global {
   interface Window {
     electronAPI: {
       invoke: <T = unknown>(
-        channel: "get-products" | "get-categories" | "add-product",
-        data?: GetProductsData | AddProductData | never,
+        channel:
+          | 'get-products'
+          | 'add-product'
+          | 'get-categories'
+          | 'add-category'
+          | 'remove-category'
+          | 'edit-category',
+        data?: GetProductsData | AddProductData | AddCategoryData | never
       ) => Promise<T>;
     };
   }
@@ -20,4 +26,8 @@ interface GetProductsData {
 interface AddProductData {
   name: string;
   categoryId: number;
+}
+
+interface AddCategoryData {
+  name: string;
 }

@@ -1,11 +1,11 @@
-import Button from "@components/button";
-import CenterLayout from "@components/center-layout";
-import Input from "@components/input";
-import Stack from "@components/stack";
-import { PlusIcon } from "lucide-react";
-import CategoryRow from "../components/category-row";
-import { CategoryProps } from "../types";
-import Text from "@components/text";
+import Button from '@components/button';
+import CenterLayout from '@components/center-layout';
+import Input from '@components/input';
+import Stack from '@components/stack';
+import { PlusIcon } from 'lucide-react';
+import CategoryRow from '../components/category-row';
+import { CategoryProps } from '../types';
+import Text from '@components/text';
 
 export default function Categories({
   categories,
@@ -21,7 +21,7 @@ export default function Categories({
       <Stack fullWidth align="stretch" space="xxl">
         <Stack direction="row">
           <Input
-            placeholder="buscar..."
+            placeholder="Digite para buscar ou adicionar"
             value={searchValue}
             onChange={handleChangeSearch}
           />

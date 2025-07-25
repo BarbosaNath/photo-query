@@ -1,5 +1,7 @@
+import { Category } from '@utils/dtos';
+
 export interface CategoryProps {
-  categories: Array<{ name: string; id: string }>;
+  categories: Array<Category>;
   searchValue: string;
   errorMessage: string;
   handleChangeSearch: (event: React.ChangeEvent<HTMLInputElement>) => void;
