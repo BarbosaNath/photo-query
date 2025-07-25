@@ -10,6 +10,7 @@ import {
   addCategory,
   deleteCategory,
   getAllCategories,
+  updateCategoryName,
 } from "./src/services/category/index.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -60,4 +61,8 @@ ipcMain.handle("add-category", (_event, body) => {
 
 ipcMain.handle("remove-category", (_event, body) => {
   return deleteCategory(body);
+});
+
+ipcMain.handle("update-category", (_event, body) => {
+  return updateCategoryName(body);
 });

@@ -8,6 +8,10 @@ export default function CategoriesController() {
   const redirect = Route.useNavigate();
   const [searchValue, setSearchValue] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [isEditingCategory, setIsEditingCategory] = useState<boolean>(false);
+  const [editingCategoryId, setEditingCategoryId] = useState<number | null>(
+    null,
+  );
 
   const handleChangeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setErrorMessage("");
@@ -63,6 +67,36 @@ export default function CategoriesController() {
     }
   };
 
+  const handleEditCategory = async () => {
+    if (!editingCategoryId) {
+      setErrorMessage("ID da categoria não pode ser vazio.");
+      return;
+    }
+
+    if (!searchValue) {
+      setErrorMessage("Nome da categoria não pode ser vazio.");
+      return;
+    }
+
+    try {
+      await window.electronAPI.invoke("update-category", {
+        id: editingCategoryId,
+        newName: searchValue,
+      });
+      console.log(
+        `Categoria com ID ${editingCategoryId} editada para: ${searchValue}`,
+      );
+      setEditingCategoryId(null);
+      setIsEditingCategory(false);
+      setSearchValue("");
+      setErrorMessage("");
+      redirect({ to: "." });
+    } catch (error) {
+      setErrorMessage("Erro ao editar categoria.");
+      console.error("Erro ao editar categoria:", error);
+    }
+  };
+
   return (
     <Categories
       categories={categories.filter((category) =>
@@ -70,10 +104,15 @@ export default function CategoriesController() {
       )}
       searchValue={searchValue}
       errorMessage={errorMessage}
+      isEditingCategory={isEditingCategory}
       handleChangeSearch={handleChangeSearch}
       handleAddCategory={handleAddCategory}
       handleRemoveCategory={handleRemoveCategory}
-      handleEditCategory={() => {}}
+      handleEditCategory={handleEditCategory}
+      handleToggleEditCategory={(id?: number) => {
+        setIsEditingCategory(!!id);
+        setEditingCategoryId(id ?? null);
+      }}
     />
   );
 }

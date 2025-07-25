@@ -11,12 +11,13 @@ declare global {
           | "get-categories"
           | "add-category"
           | "remove-category"
-          | "edit-category",
+          | "update-category",
         data?:
           | GetProductsData
           | AddProductData
           | AddCategoryData
-          | RemoveByIdData
+          | ActByIdData
+          | UpdateCategoryNameData
           | never,
       ) => Promise<T>;
     };
@@ -37,6 +38,11 @@ interface AddCategoryData {
   name: string;
 }
 
-interface RemoveByIdData {
+interface ActByIdData {
   id: number;
+}
+
+interface UpdateCategoryNameData {
+  id: number;
+  newName: string;
 }
