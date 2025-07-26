@@ -11,6 +11,7 @@ export default function Button({
   onClick: handleClick,
   href,
   target,
+  style,
 }: ButtonProps) {
   const base = 'lds--button';
 
@@ -29,6 +30,7 @@ export default function Button({
         onClick={handleClick}
         href={href}
         target={target}
+        style={style}
       >
         {children}
       </a>
@@ -41,6 +43,7 @@ export default function Button({
       className={className}
       disabled={disabled}
       onClick={handleClick}
+      style={style}
     >
       {children}
     </button>

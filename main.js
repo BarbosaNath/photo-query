@@ -18,6 +18,9 @@ import {
   getAllCharacteristics,
   getCharacteristicById,
   updateCharacteristicName,
+  addSubcharacteristic,
+  updateSubcharacteristic,
+  deleteSubcharacteristic,
   getSubcharacteristicsByCharacteristicId,
 } from './src/services/characteristic/index.js';
 const __filename = fileURLToPath(import.meta.url);
@@ -97,4 +100,16 @@ ipcMain.handle('update-characteristic', (_event, body) => {
 
 ipcMain.handle('get-subcharacteristics', (_event, body) => {
   return getSubcharacteristicsByCharacteristicId(body);
+});
+
+ipcMain.handle('add-subcharacteristic', (_event, body) => {
+  return addSubcharacteristic(body);
+});
+
+ipcMain.handle('update-subcharacteristic', (_event, body) => {
+  return updateSubcharacteristic(body);
+});
+
+ipcMain.handle('remove-subcharacteristic', (_event, body) => {
+  return deleteSubcharacteristic(body);
 });

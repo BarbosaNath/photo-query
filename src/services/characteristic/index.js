@@ -7,7 +7,7 @@ export function addCharacteristic({ name }) {
         INSERT INTO characteristics (name)
         VALUES (?);
     `;
-  db.prepare(insertCharacteristicSQL).run(name);
+  return db.prepare(insertCharacteristicSQL).run(name);
 }
 
 export function addSubcharacteristic({ characteristicId, name }) {
@@ -15,7 +15,7 @@ export function addSubcharacteristic({ characteristicId, name }) {
         INSERT INTO subcharacteristics (characteristic_id, name)
         VALUES (?, ?);
     `;
-  db.prepare(insertSubcharacteristicSQL).run(characteristicId, name);
+  return db.prepare(insertSubcharacteristicSQL).run(characteristicId, name);
 }
 
 export function updateSubcharacteristic({ id, characteristicId, name }) {
@@ -24,7 +24,7 @@ export function updateSubcharacteristic({ id, characteristicId, name }) {
         SET characteristic_id = ?, name = ?, updated_at = CURRENT_TIMESTAMP
         WHERE id = ?;
     `;
-  db.prepare(updateSubcharacteristicSQL).run(characteristicId, name, id);
+  return db.prepare(updateSubcharacteristicSQL).run(characteristicId, name, id);
 }
 
 export function getCharacteristicByName(name) {
@@ -69,4 +69,11 @@ export function getSubcharacteristicsByCharacteristicId({ characteristicId }) {
         SELECT * FROM subcharacteristics WHERE characteristic_id = ?;
     `;
   return db.prepare(getSubcharacteristicsSQL).all(characteristicId);
+}
+
+export function deleteSubcharacteristic({ id }) {
+  const deleteSubcharacteristicSQL = `
+        DELETE FROM subcharacteristics WHERE id = ?;
+    `;
+  return db.prepare(deleteSubcharacteristicSQL).run(id);
 }

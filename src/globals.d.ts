@@ -1,23 +1,20 @@
 // globals.d.ts
 export {};
 
+type Actions = 'get' | 'add' | 'remove' | 'update';
 declare global {
   interface Window {
     electronAPI: {
       invoke: <T = unknown>(
         channel:
           | 'get-products'
-          | 'add-product'
+          | `${Actions}-product`
           | 'get-categories'
-          | 'add-category'
-          | 'remove-category'
-          | 'update-category'
-          | 'add-characteristic'
-          | 'get-characteristic'
+          | `${Actions}-category`
           | 'get-characteristics'
-          | 'update-characteristic'
-          | 'remove-characteristic'
-          | 'get-subcharacteristics',
+          | `${Actions}-characteristic`
+          | 'get-subcharacteristics'
+          | `${Actions}-subcharacteristic`,
         data?:
           | GetProductsData
           | AddProductData
@@ -25,6 +22,8 @@ declare global {
           | ActByIdData
           | UpdateCategoryNameData
           | GetSubcharacteristicsData
+          | AddSubcharacteristicsData
+          | UpdateSubcharacteristicsData
           | never,
       ) => Promise<T>;
     };
@@ -55,5 +54,16 @@ interface UpdateCategoryNameData {
 }
 
 interface GetSubcharacteristicsData {
+  characteristicId: number;
+}
+
+interface AddSubcharacteristicsData {
+  newName: string;
+  characteristicId: number;
+}
+
+interface UpdateSubcharacteristicsData {
+  id: number;
+  newName: string;
   characteristicId: number;
 }

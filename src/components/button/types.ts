@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { CSSProperties, PropsWithChildren } from 'react';
 
 export interface PrimaryButtonProps extends PropsWithChildren {
   primary: true;
@@ -10,6 +10,7 @@ export interface PrimaryButtonProps extends PropsWithChildren {
   link?: never;
   href?: never;
   target?: never;
+  style?: CSSProperties;
 }
 
 export interface PrimaryFormButtonProps extends PropsWithChildren {
@@ -22,6 +23,7 @@ export interface PrimaryFormButtonProps extends PropsWithChildren {
   link?: never;
   href?: never;
   target?: never;
+  style?: CSSProperties;
 }
 
 export interface SecondaryButtonProps extends PropsWithChildren {
@@ -34,6 +36,7 @@ export interface SecondaryButtonProps extends PropsWithChildren {
   link?: never;
   href?: never;
   target?: never;
+  style?: CSSProperties;
 }
 
 export interface SecondaryFormButtonProps extends PropsWithChildren {
@@ -46,6 +49,7 @@ export interface SecondaryFormButtonProps extends PropsWithChildren {
   link?: never;
   href?: never;
   target?: never;
+  style?: CSSProperties;
 }
 
 interface LinkButtonOnClickProps extends PropsWithChildren {
@@ -58,6 +62,7 @@ interface LinkButtonOnClickProps extends PropsWithChildren {
   disabled?: never;
   href?: never;
   target?: '_blank' | '_self' | '_parent' | '_top';
+  style?: CSSProperties;
 }
 
 interface LinkButtonHrefProps extends PropsWithChildren {
@@ -70,6 +75,7 @@ interface LinkButtonHrefProps extends PropsWithChildren {
   disabled?: never;
   href: string;
   target?: '_blank' | '_self' | '_parent' | '_top';
+  style?: CSSProperties;
 }
 
 export interface FakeButtonProps extends PropsWithChildren {
@@ -82,6 +88,7 @@ export interface FakeButtonProps extends PropsWithChildren {
   link?: boolean;
   href?: never;
   target?: never;
+  style?: CSSProperties;
 }
 
 export type ButtonProps =
