@@ -163,6 +163,14 @@ export function filterProductsByMultipleCriteria(body) {
     WHERE pc.product_id = ?
   `);
 
+  const imageQuery = db.prepare(`
+    SELECT
+      pi.*
+    FROM product_images pi
+    JOIN products p ON p.id = pi.product_id
+    WHERE p.id = ?
+  `);
+
   for (const product of products) {
     const chars = characteristicQuery.all(product.id);
     product.characteristics = chars.map((c) => ({
@@ -171,6 +179,9 @@ export function filterProductsByMultipleCriteria(body) {
       subcharacteristicId: c.subcharacteristic_id,
       subcharacteristicName: c.subcharacteristic_name,
     }));
+
+    const images = imageQuery.all(product.id);
+    product.images = images;
   }
 
   return products;

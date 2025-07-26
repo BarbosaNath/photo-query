@@ -6,6 +6,7 @@ import { RowCardProps } from './types';
 
 export default function RowCard({
   title,
+  children,
   onRemove: handleRemove,
   onEdit: handleEdit,
   onClick: handleClick,
@@ -25,29 +26,32 @@ export default function RowCard({
         <Text weight="medium" size="md">
           {title}
         </Text>
+        {children}
       </Card>
 
-      {handleRemove && (
-        <Card
-          padding="lg"
-          radius="md"
-          onClick={handleRemove}
-          style={{ userSelect: 'none', cursor: 'pointer' }}
-        >
-          <TrashIcon size={16} />
-        </Card>
-      )}
+      <Stack direction={children ? 'column' : 'row'} space="sm">
+        {handleRemove && (
+          <Card
+            padding="lg"
+            radius="md"
+            onClick={handleRemove}
+            style={{ userSelect: 'none', cursor: 'pointer' }}
+          >
+            <TrashIcon size={16} />
+          </Card>
+        )}
 
-      {handleEdit && (
-        <Card
-          padding="lg"
-          radius="md"
-          onClick={handleEdit}
-          style={{ userSelect: 'none', cursor: 'pointer' }}
-        >
-          <PencilIcon size={16} />
-        </Card>
-      )}
+        {handleEdit && (
+          <Card
+            padding="lg"
+            radius="md"
+            onClick={handleEdit}
+            style={{ userSelect: 'none', cursor: 'pointer' }}
+          >
+            <PencilIcon size={16} />
+          </Card>
+        )}
+      </Stack>
     </Stack>
   );
 }

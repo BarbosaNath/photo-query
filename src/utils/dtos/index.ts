@@ -32,6 +32,12 @@ export interface Product {
     subcharacteristicId?: number;
     subcharacteristicName?: string;
   }[];
+  images?: {
+    id: number;
+    image_url: string;
+    created_at: string;
+    updated_at: string;
+  }[];
   created_at: string;
   updated_at: string;
 }
