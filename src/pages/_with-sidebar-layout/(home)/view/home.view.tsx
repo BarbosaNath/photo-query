@@ -2,20 +2,40 @@ import CenterLayout from '@components/center-layout';
 import RowCard from '@components/row';
 import Stack from '@components/stack';
 import Text from '@components/text';
-import { Product } from '@utils/dtos';
+import { HomeProps } from '../types';
+import Input from '@components/input';
+import { SearchIcon } from 'lucide-react';
+import Button from '@components/button';
 
-export default function Home({ products }: { products: Product[] }) {
+export default function Home({
+  products,
+  searchValue,
+  onEdit: handleEdit,
+  onRemove: handleRemove,
+  onChangeSearch: handleChangeSearch,
+}: HomeProps) {
   return (
     <>
-      <CenterLayout width={90}>
-        <Stack>
+      <CenterLayout title="Produtos" width={90}>
+        <Stack align="stretch">
+          <Stack direction="row">
+            <Input
+              placeholder="Digite para buscar"
+              value={searchValue}
+              onChange={handleChangeSearch}
+            />
+            <Button primary onClick={() => {}}>
+              <SearchIcon size={12} strokeWidth={4} /> BUSCAR
+            </Button>
+          </Stack>
+
           {products.map((product) => (
             <>
               <RowCard
                 key={product.id}
                 title={product.name}
-                onEdit={() => console.log('Edit', product.id)}
-                onRemove={() => console.log('Remove', product.id)}
+                onEdit={() => handleEdit(product.id)}
+                onRemove={() => handleRemove(product.id)}
               >
                 <Text tertiary size="xs">
                   {product.updated_at}

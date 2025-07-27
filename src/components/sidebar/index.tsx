@@ -48,7 +48,7 @@ export default function Sidebar() {
             Buscar Produto
           </IconLink>
 
-          <IconLink icon={<PackageIcon />} to="/">
+          <IconLink icon={<PackageIcon />} to="/product/$productId">
             Detalhes do Produto
           </IconLink>
 

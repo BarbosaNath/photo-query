@@ -33,11 +33,46 @@ export function deleteProduct(id) {
   db.prepare(deleteProductSQL).run(id);
 }
 
-export function getProductById(id) {
+export function getProductById({ id }) {
   const getProductSQL = `
         SELECT * FROM products WHERE id = ?;
     `;
-  return db.prepare(getProductSQL).get(id);
+
+  const product = db.prepare(getProductSQL).get(id);
+
+  const characteristicQuery = db.prepare(`
+    SELECT
+      pc.product_id,
+      pc.characteristic_id,
+      ch.name AS characteristic_name,
+      pc.subcharacteristic_id,
+      sch.name AS subcharacteristic_name
+    FROM product_characteristics pc
+    JOIN characteristics ch ON pc.characteristic_id = ch.id
+    LEFT JOIN subcharacteristics sch ON pc.subcharacteristic_id = sch.id
+    WHERE pc.product_id = ?
+  `);
+
+  const imageQuery = db.prepare(`
+    SELECT
+      pi.*
+    FROM product_images pi
+    JOIN products p ON p.id = pi.product_id
+    WHERE p.id = ?
+  `);
+
+  const chars = characteristicQuery.all(product.id);
+  product.characteristics = chars.map((c) => ({
+    characteristicId: c.characteristic_id,
+    characteristicName: c.characteristic_name,
+    subcharacteristicId: c.subcharacteristic_id,
+    subcharacteristicName: c.subcharacteristic_name,
+  }));
+
+  const images = imageQuery.all(product.id);
+  product.images = images;
+
+  return product;
 }
 
 export function addProductImage({ productId, imageUrl }) {

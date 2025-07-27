@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 import process from 'node:process';
 import {
   addProduct,
+  getProductById,
   filterProductsByMultipleCriteria,
 } from './src/services/product/index.js';
 import {
@@ -52,6 +53,10 @@ app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();
   }
+});
+
+ipcMain.handle('get-product', (_event, body) => {
+  return getProductById(body);
 });
 
 ipcMain.handle('get-products', (_event, body) => {
