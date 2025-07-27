@@ -24,7 +24,7 @@ export default function Home({
         <Stack align="stretch">
           <SearchBar
             searchValue={searchValue}
-            handleChangeSearch={handleChangeSearch}
+            onChangeSearch={handleChangeSearch}
           />
 
           <Filters
@@ -32,8 +32,8 @@ export default function Home({
             characteristics={characteristics}
             selectedCategory={selectedCategory}
             selectedCharacteristics={selectedCharacteristics}
-            handleSelectCategory={handleSelectCategory}
-            handleSelectCharacteristic={handleSelectCharacteristic}
+            onSelectCategory={handleSelectCategory}
+            onSelectCharacteristic={handleSelectCharacteristic}
           />
 
           <ProductList

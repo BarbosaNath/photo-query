@@ -2,14 +2,12 @@ import Button from '@components/button';
 import Input from '@components/input';
 import Stack from '@components/stack';
 import { SearchIcon } from 'lucide-react';
+import { SearchBarProps } from '../types';
 
 export default function SearchBar({
   searchValue,
-  handleChangeSearch,
-}: {
-  searchValue: string;
-  handleChangeSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}) {
+  onChangeSearch: handleChangeSearch,
+}: SearchBarProps) {
   return (
     <Stack direction="row">
       <Input

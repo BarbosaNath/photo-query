@@ -2,17 +2,13 @@ import RowCard from '@components/row';
 import Text from '@components/text';
 import CharacteristicsList from './characteristics-list';
 import ImageList from './image-list';
-import { Product } from '@utils/dtos';
+import { ProductListProps } from '../types';
 
 export default function ProductList({
   products,
   onEdit: handleEdit,
   onRemove: handleRemove,
-}: {
-  products: Product[];
-  onEdit: (id: number) => void;
-  onRemove: (id: number) => void;
-}) {
+}: ProductListProps) {
   return products.map((product) => (
     <RowCard
       key={product.id}

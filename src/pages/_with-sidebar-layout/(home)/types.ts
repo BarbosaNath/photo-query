@@ -5,18 +5,11 @@ export interface CharacteristicFilter {
   subId?: number;
 }
 
-export interface HomeProps {
-  products: Product[];
-  categories: Category[];
-  characteristics: Characteristic[];
+export type HomeProps = SearchBarProps & FilterProps & ProductListProps;
+
+export interface SearchBarProps {
   searchValue: string;
-  selectedCategory: number | null;
-  selectedCharacteristics: CharacteristicFilter[] | null;
-  onEdit: (id: number) => void;
-  onRemove: (id: number) => void;
   onChangeSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onSelectCategory: (categoryId: number) => void;
-  onSelectCharacteristic: (id: number, subId?: number) => void;
 }
 
 export interface FilterProps {
@@ -24,6 +17,12 @@ export interface FilterProps {
   characteristics: Characteristic[];
   selectedCategory: number | null;
   selectedCharacteristics: CharacteristicFilter[] | null;
-  handleSelectCategory: (categoryId: number) => void;
-  handleSelectCharacteristic: (id: number, subId?: number) => void;
+  onSelectCategory: (categoryId: number) => void;
+  onSelectCharacteristic: (id: number, subId?: number) => void;
+}
+
+export interface ProductListProps {
+  products: Product[];
+  onEdit: (id: number) => void;
+  onRemove: (id: number) => void;
 }

@@ -9,8 +9,8 @@ export default function Filters({
   characteristics,
   selectedCategory,
   selectedCharacteristics,
-  handleSelectCategory,
-  handleSelectCharacteristic,
+  onSelectCategory: handleSelectCategory,
+  onSelectCharacteristic: handleSelectCharacteristic,
 }: FilterProps) {
   return (
     <Card padding="lg" radius="md">
