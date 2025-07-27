@@ -35,7 +35,10 @@ export function deleteProduct(id) {
 
 export function getProductById({ id }) {
   const getProductSQL = `
-        SELECT * FROM products WHERE id = ?;
+        SELECT p.*, c.name AS category_name
+        FROM products p
+        LEFT JOIN categories c ON p.category_id = c.id
+        WHERE p.id = ?;
     `;
 
   const product = db.prepare(getProductSQL).get(id);

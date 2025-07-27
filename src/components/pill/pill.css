@@ -17,3 +17,27 @@
     transparent 95%
   );
 }
+
+.lds--pill--hover--success:hover {
+  border: 1.5px solid var(--lds-color-success);
+}
+
+.lds--pill--hover--success:hover .lds--text {
+  color: var(--lds-text-color-success);
+}
+
+.lds--pill--hover--error:hover {
+  border: 1.5px solid var(--lds-color-error);
+}
+
+.lds--pill--hover--error:hover .lds--text {
+  color: var(--lds-text-color-error);
+}
+
+.lds--pill--hover--warning:hover {
+  border: 1.5px solid var(--lds-color-warning);
+}
+
+.lds--pill--hover--warning:hover .lds--text {
+  color: var(--lds-text-color-warning);
+}

@@ -14,6 +14,7 @@ export default function Stack({
   fullWidth,
   fullHeight,
   style,
+  scroll,
   className: newClasses,
   ...rest
 }: StackProps) {
@@ -41,8 +42,16 @@ export default function Stack({
     return paddingsStyle;
   };
 
+  const getScrollModifier = () => {
+    return scroll === 'x'
+      ? `${base}--scroll-x`
+      : scroll === 'y'
+        ? `${base}--scroll-y`
+        : '';
+  };
+
   const className = removeSpaces(
-    `${base} ${getWrapModifier()} ${getFullHeightModifier()} ${getFullWidthModifier()} ${base}--space-${space} ${base}--direction--${direction} ${base}--align-${align} ${base}--justify-${justify} ${newClasses ?? ''}`,
+    `${base} ${getWrapModifier()} ${getFullHeightModifier()} ${getFullWidthModifier()} ${base}--space-${space} ${base}--direction--${direction} ${base}--align-${align} ${base}--justify-${justify} ${newClasses ?? ''} ${getScrollModifier()}`,
   );
 
   return createElement(

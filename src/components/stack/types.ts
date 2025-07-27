@@ -18,6 +18,7 @@ export interface StackProps extends PropsWithChildren {
   justify?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly';
   direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
   wrap?: true | 'nowrap' | 'wrap' | 'mobile' | 'wrap-reverse';
+  scroll?: 'x' | 'y';
   fullWidth?: boolean;
   fullHeight?: boolean;
   style?: StyleHTMLAttributes<HTMLElement>;

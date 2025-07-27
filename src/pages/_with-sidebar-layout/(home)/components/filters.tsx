@@ -22,6 +22,7 @@ export default function Filters({
             disabled={
               selectedCategory !== null && selectedCategory !== category.id
             }
+            hoverColor="success"
             onClick={() => handleSelectCategory(category.id)}
           >
             {category.name}
@@ -39,6 +40,7 @@ export default function Filters({
                     (item) =>
                       item.id === characteristic.id && item.subId === sub.id,
                   )}
+                  hoverColor="success"
                   onClick={() =>
                     handleSelectCharacteristic(characteristic.id, sub.id)
                   }
@@ -51,6 +53,7 @@ export default function Filters({
                 active={selectedCharacteristics?.some(
                   (item) => item.id === characteristic.id,
                 )}
+                hoverColor="success"
                 onClick={() => handleSelectCharacteristic(characteristic.id)}
               >
                 {characteristic.name}
