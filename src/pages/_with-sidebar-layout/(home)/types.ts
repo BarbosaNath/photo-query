@@ -1,7 +1,9 @@
-import { Product } from '@utils/dtos';
+import { Category, Characteristic, Product } from '@utils/dtos';
 
 export interface HomeProps {
   products: Product[];
+  categories: Category[];
+  characteristics: Characteristic[];
   searchValue: string;
   onEdit: (id: number) => void;
   onRemove: (id: number) => void;

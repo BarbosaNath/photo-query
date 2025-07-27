@@ -54,7 +54,19 @@ export function getAllCharacteristics() {
   const getAllCharacteristicsSQL = `
         SELECT * FROM characteristics;
     `;
-  return db.prepare(getAllCharacteristicsSQL).all();
+  const characteristics = db.prepare(getAllCharacteristicsSQL).all();
+
+  const subcharacteristicQuery = db.prepare(`
+    SELECT * FROM subcharacteristics WHERE characteristic_id = ?;
+  `);
+
+  return characteristics.map((characteristic) => {
+    const subcharacteristics = subcharacteristicQuery.all(characteristic.id);
+    return {
+      ...characteristic,
+      subcharacteristics: subcharacteristics,
+    };
+  });
 }
 
 export function getCharacteristicById({ id }) {

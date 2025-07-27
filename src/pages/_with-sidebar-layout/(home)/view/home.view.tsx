@@ -6,9 +6,14 @@ import { HomeProps } from '../types';
 import Input from '@components/input';
 import { SearchIcon } from 'lucide-react';
 import Button from '@components/button';
+import Card from '@components/card';
+import Pill from '@components/pill';
+import { Fragment } from 'react/jsx-runtime';
 
 export default function Home({
   products,
+  categories,
+  characteristics,
   searchValue,
   onEdit: handleEdit,
   onRemove: handleRemove,
@@ -28,6 +33,29 @@ export default function Home({
               <SearchIcon size={12} strokeWidth={4} /> BUSCAR
             </Button>
           </Stack>
+
+          <Card padding="lg" radius="md">
+            <Stack space="sm" direction="row" fullWidth wrap>
+              {categories.map((category) => (
+                <Pill key={category.id}>{category.name}</Pill>
+              ))}
+
+              {characteristics.map((characteristic) => (
+                <Fragment key={characteristic.id}>
+                  {characteristic.subcharacteristics &&
+                  characteristic.subcharacteristics.length > 0 ? (
+                    characteristic.subcharacteristics.map((sub) => (
+                      <Pill key={sub.id}>
+                        {characteristic.name}: {sub.name}
+                      </Pill>
+                    ))
+                  ) : (
+                    <Pill>{characteristic.name}</Pill>
+                  )}
+                </Fragment>
+              ))}
+            </Stack>
+          </Card>
 
           {products.map((product) => (
             <>

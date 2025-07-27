@@ -3,7 +3,15 @@ import { Route } from '..';
 import { useState } from 'react';
 
 export default function HomeController() {
-  const products = Route.useLoaderData();
+  const { products, categories, characteristics } = Route.useLoaderData();
+  console.log(
+    'Products:',
+    products,
+    'Categories:',
+    categories,
+    'Characteristics:',
+    characteristics,
+  );
   const redirect = Route.useNavigate();
   const [searchValue, setSearchValue] = useState('');
 
@@ -23,6 +31,8 @@ export default function HomeController() {
       products={products.filter((product) =>
         product.name.toLowerCase().includes(searchValue.toLowerCase()),
       )}
+      categories={categories}
+      characteristics={characteristics}
       searchValue={searchValue}
       onEdit={handleEdit}
       onRemove={() => {}}

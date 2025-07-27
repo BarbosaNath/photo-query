@@ -1,0 +1,18 @@
+.lds--pill {
+  padding: 0.25rem 0.5rem;
+  border: 1.5px solid var(--lds-color-dark);
+  border-radius: var(--lds-radius-xl);
+}
+
+.lds--pill--disabled {
+  border: 1.5px solid var(--lds-color-gray);
+}
+
+.lds--pill--active {
+  border: 1.5px solid var(--lds-color-success);
+  background-color: color-mix(
+    in srgb,
+    var(--lds-color-success),
+    transparent 95%
+  );
+}
