@@ -13,7 +13,6 @@ export default function Pill({
     <div
       className={`${baseClass}${disabled ? ` ${baseClass}--disabled` : ''}${active ? ` ${baseClass}--active` : ''}`}
       onClick={handleClick}
-      style={{ cursor: disabled ? 'not-allowed' : 'pointer' }}
     >
       <Text success={active} tertiary={disabled} size="sm">
         {children}

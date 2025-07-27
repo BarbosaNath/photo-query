@@ -2,6 +2,7 @@
   padding: 0.25rem 0.5rem;
   border: 1.5px solid var(--lds-color-dark);
   border-radius: var(--lds-radius-xl);
+  cursor: pointer;
 }
 
 .lds--pill--disabled {

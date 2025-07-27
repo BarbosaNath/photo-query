@@ -1,0 +1,64 @@
+import Card from '@components/card';
+import Stack from '@components/stack';
+import Pill from '@components/pill';
+import { Fragment } from 'react/jsx-runtime';
+import { FilterProps } from '../types';
+
+export default function Filters({
+  categories,
+  characteristics,
+  selectedCategory,
+  selectedCharacteristics,
+  handleSelectCategory,
+  handleSelectCharacteristic,
+}: FilterProps) {
+  return (
+    <Card padding="lg" radius="md">
+      <Stack space="sm" direction="row" fullWidth wrap>
+        {categories.map((category) => (
+          <Pill
+            key={category.id}
+            active={selectedCategory === category.id}
+            disabled={
+              selectedCategory !== null && selectedCategory !== category.id
+            }
+            onClick={() => handleSelectCategory(category.id)}
+          >
+            {category.name}
+          </Pill>
+        ))}
+
+        {characteristics.map((characteristic) => (
+          <Fragment key={characteristic.id}>
+            {characteristic.subcharacteristics &&
+            characteristic.subcharacteristics.length > 0 ? (
+              characteristic.subcharacteristics.map((sub) => (
+                <Pill
+                  key={sub.id}
+                  active={selectedCharacteristics?.some(
+                    (item) =>
+                      item.id === characteristic.id && item.subId === sub.id,
+                  )}
+                  onClick={() =>
+                    handleSelectCharacteristic(characteristic.id, sub.id)
+                  }
+                >
+                  {characteristic.name}: {sub.name}
+                </Pill>
+              ))
+            ) : (
+              <Pill
+                active={selectedCharacteristics?.some(
+                  (item) => item.id === characteristic.id,
+                )}
+                onClick={() => handleSelectCharacteristic(characteristic.id)}
+              >
+                {characteristic.name}
+              </Pill>
+            )}
+          </Fragment>
+        ))}
+      </Stack>
+    </Card>
+  );
+}
