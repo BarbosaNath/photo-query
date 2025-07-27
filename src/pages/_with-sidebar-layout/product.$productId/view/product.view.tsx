@@ -12,71 +12,69 @@ export default function Product({
   product,
   onSelectProduct: handleSelectProduct,
 }: ProductPageProps) {
+  if (!product) {
+    return <ProductNotFound onSelectProduct={handleSelectProduct} />;
+  }
+
   return (
     <CenterLayout title="Detalhes do Produto" width={90}>
-      {!product && <ProductNotFound onSelectProduct={handleSelectProduct} />}
+      <Card>
+        <Text tertiary size="xs">
+          ID: {product.id}
+        </Text>
 
-      {product && (
-        <Card>
-          <Text tertiary size="xs">
-            ID: {product.id}
-          </Text>
+        <Text as="h3" size="lg" weight="bold">
+          {product.name}
+        </Text>
 
-          <Text as="h3" size="lg" weight="bold">
-            {product.name}
-          </Text>
+        <Stack align="center" space="xs" direction="row" fullWidth>
+          <Text size="md">Categoria: {product.category_name}</Text>
+          <RefreshCwIcon size={14} cursor={'pointer'} />
+        </Stack>
 
-          <Stack align="center" space="xs" direction="row" fullWidth>
-            <Text size="md">Categoria: {product.category_name}</Text>
-            <RefreshCwIcon size={14} cursor={'pointer'} />
-          </Stack>
+        {product.characteristics && product.characteristics.length > 0 && (
+          <Stack space="xs" direction="row" align="center" fullWidth wrap>
+            <Text>Caracteristicas: </Text>
 
-          {product.characteristics && product.characteristics.length > 0 && (
-            <Stack space="xs" direction="row" align="center" fullWidth wrap>
-              <Text>Caracteristicas: </Text>
-
-              {product.characteristics.map((c) => (
-                <Pill
-                  key={c.characteristicId}
-                  hoverColor="success"
-                  hoverComponent={
-                    <>
-                      {c.characteristicName}
-                      {c.subcharacteristicName
-                        ? `: ${c.subcharacteristicName}`
-                        : ''}{' '}
-                      <PencilIcon size={10} strokeWidth={2.5} />
-                    </>
-                  }
-                >
-                  {c.characteristicName}
-                  {c.subcharacteristicName
-                    ? `: ${c.subcharacteristicName}`
-                    : ''}
-                </Pill>
-              ))}
-
-              <Pill hoverColor="success">
-                <PlusIcon size={12} />
+            {product.characteristics.map((c) => (
+              <Pill
+                key={c.characteristicId}
+                hoverColor="success"
+                hoverComponent={
+                  <>
+                    {c.characteristicName}
+                    {c.subcharacteristicName
+                      ? `: ${c.subcharacteristicName}`
+                      : ''}{' '}
+                    <PencilIcon size={10} strokeWidth={2.5} />
+                  </>
+                }
+              >
+                {c.characteristicName}
+                {c.subcharacteristicName ? `: ${c.subcharacteristicName}` : ''}
               </Pill>
-            </Stack>
-          )}
+            ))}
 
-          <ImageList images={product.images} />
-
-          <Stack space="xs">
-            <Text tertiary size="xs">
-              Criado em:{' '}
-              {new Date(product.created_at).toLocaleDateString('pt-BR')}
-            </Text>
-
-            <Text tertiary size="xs">
-              Atualizado em:{' '}
-              {new Date(product.updated_at).toLocaleDateString('pt-BR')}
-            </Text>
+            <Pill hoverColor="success">
+              <PlusIcon size={12} />
+            </Pill>
           </Stack>
-        </Card>
-      )}
+        )}
+
+        <ImageList images={product.images} />
+
+        <Stack space="xs">
+          <Text tertiary size="xs">
+            Criado em:{' '}
+            {new Date(product.created_at).toLocaleDateString('pt-BR')}
+          </Text>
+
+          <Text tertiary size="xs">
+            Atualizado em:{' '}
+            {new Date(product.updated_at).toLocaleDateString('pt-BR')}
+          </Text>
+        </Stack>
+      </Card>
     </CenterLayout>
   );
 }
