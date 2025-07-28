@@ -1,6 +1,6 @@
-import CenterLayout from "@components/center-layout";
-import { LoaderCircleIcon } from "lucide-react";
-import "./loading-page.css";
+import CenterLayout from '@components/center-layout';
+import { LoaderCircleIcon } from 'lucide-react';
+import './loading-page.css';
 
 export default function LoadingPage() {
   return (

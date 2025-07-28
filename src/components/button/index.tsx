@@ -1,5 +1,5 @@
-import { ButtonProps } from "./types";
-import "./button.css";
+import { ButtonProps } from './types';
+import './button.css';
 
 export default function Button({
   children,
@@ -7,12 +7,13 @@ export default function Button({
   secondary,
   link,
   disabled = false,
-  type = "button",
+  type = 'button',
   onClick: handleClick,
   href,
   target,
+  style,
 }: ButtonProps) {
-  const base = "lds--button";
+  const base = 'lds--button';
 
   const getColorModifier = () => {
     if (primary) return `${base}--primary`;
@@ -29,6 +30,7 @@ export default function Button({
         onClick={handleClick}
         href={href}
         target={target}
+        style={style}
       >
         {children}
       </a>
@@ -41,6 +43,7 @@ export default function Button({
       className={className}
       disabled={disabled}
       onClick={handleClick}
+      style={style}
     >
       {children}
     </button>

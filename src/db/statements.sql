@@ -84,6 +84,9 @@ INSERT INTO product_characteristics (product_id, characteristic_id, subcharacter
 INSERT INTO product_characteristics (product_id, characteristic_id, subcharacteristic_id) VALUES (2, 2, 1);
 INSERT INTO product_characteristics (product_id, characteristic_id, subcharacteristic_id) VALUES (3, 1, 1);
 
+
+INSERT INTO product_images (product_id, image_url) VALUES (2, '/images/roupa-vermelha.jpg');
+
 SELECT * FROM users;
 
 SELECT * FROM categories;

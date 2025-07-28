@@ -1,36 +1,50 @@
-import CenterLayout from "@components/center-layout";
-import Stack from "@components/stack";
-import Text from "@components/text";
-import { Product } from "@utils/dtos";
+import CenterLayout from '@components/center-layout';
+import Stack from '@components/stack';
+import { HomeProps } from '../types';
+import Filters from '../components/filters';
+import ProductList from '../components/product-list';
+import SearchBar from '../components/search-bar';
 
-export default function Home({ products }: { products: Product[] }) {
+export default function Home({
+  products,
+  categories,
+  characteristics,
+  searchValue,
+  selectedCategory,
+  selectedCharacteristics,
+  onEdit: handleEdit,
+  onRemove: handleRemove,
+  onShare: handleShare,
+  onChangeSearch: handleChangeSearch,
+  onSelectCategory: handleSelectCategory,
+  onSelectCharacteristic: handleSelectCharacteristic,
+}: HomeProps) {
   return (
-    <CenterLayout width={90}>
-      <Stack>
-        {products.map((product) => (
-          <>
-            <Text weight="bold" key={product.id}>
-              {product.name}
-            </Text>
-            <Text weight="light">{product.category_name}</Text>
+    <>
+      <CenterLayout title="Produtos" width={90}>
+        <Stack align="stretch">
+          <SearchBar
+            searchValue={searchValue}
+            onChangeSearch={handleChangeSearch}
+            onShare={handleShare}
+          />
 
-            <Text secondary size="xs">
-              {product.characteristics &&
-                product.characteristics.length > 0 && (
-                  <Text secondary as="span" size="xs">
-                    {` | `}
-                  </Text>
-                )}
-              {product.characteristics?.map((char) => (
-                <Text secondary as="span" size="xs" key={char.characteristicId}>
-                  {char.characteristicName} - {char.subcharacteristicName}
-                  {` | `}
-                </Text>
-              ))}
-            </Text>
-          </>
-        ))}
-      </Stack>
-    </CenterLayout>
+          <Filters
+            categories={categories}
+            characteristics={characteristics}
+            selectedCategory={selectedCategory}
+            selectedCharacteristics={selectedCharacteristics}
+            onSelectCategory={handleSelectCategory}
+            onSelectCharacteristic={handleSelectCharacteristic}
+          />
+
+          <ProductList
+            products={products}
+            onEdit={handleEdit}
+            onRemove={handleRemove}
+          />
+        </Stack>
+      </CenterLayout>
+    </>
   );
 }

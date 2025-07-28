@@ -127,3 +127,11 @@
 .lds--stack.lds--stack--justify-evenly {
   justify-content: space-evenly;
 }
+
+.lds--stack.lds--stack--scroll-x {
+  overflow-x: auto;
+}
+
+.lds--stack.lds--stack--scroll-y {
+  overflow-y: auto;
+}

@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 export interface ButtonLayoutProps {
   primaryButton: ReactNode;
@@ -6,5 +6,5 @@ export interface ButtonLayoutProps {
   row?: boolean;
   column?: boolean;
   fullWidth?: boolean;
-  space?: "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl";
+  space?: 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 }

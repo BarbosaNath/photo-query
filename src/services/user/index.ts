@@ -1,6 +1,6 @@
-import sqlite from "better-sqlite3";
+import sqlite from 'better-sqlite3';
 
-const db = sqlite("src/db/database.db", { verbose: console.log });
+const db = sqlite('src/db/database.db', { verbose: console.log });
 
 export function addUser({
   email,

@@ -1,0 +1,43 @@
+.lds--pill {
+  padding: 0.25rem 0.5rem;
+  border: 1.5px solid var(--lds-color-dark);
+  border-radius: var(--lds-radius-xl);
+  cursor: pointer;
+}
+
+.lds--pill--disabled {
+  border: 1.5px solid var(--lds-color-gray);
+}
+
+.lds--pill--active {
+  border: 1.5px solid var(--lds-color-success);
+  background-color: color-mix(
+    in srgb,
+    var(--lds-color-success),
+    transparent 95%
+  );
+}
+
+.lds--pill--hover--success:hover {
+  border: 1.5px solid var(--lds-color-success);
+}
+
+.lds--pill--hover--success:hover .lds--text {
+  color: var(--lds-text-color-success);
+}
+
+.lds--pill--hover--error:hover {
+  border: 1.5px solid var(--lds-color-error);
+}
+
+.lds--pill--hover--error:hover .lds--text {
+  color: var(--lds-text-color-error);
+}
+
+.lds--pill--hover--warning:hover {
+  border: 1.5px solid var(--lds-color-warning);
+}
+
+.lds--pill--hover--warning:hover .lds--text {
+  color: var(--lds-text-color-warning);
+}

@@ -17,7 +17,7 @@ export default function AddProductForm({
   const [productName, setProductName] = useState('');
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(
-    null
+    null,
   );
 
   const redirect = useNavigate();
@@ -38,7 +38,7 @@ export default function AddProductForm({
   }, []);
 
   const handleProductNameChange = (
-    event: React.ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     setProductName(event.target.value);
   };
@@ -57,7 +57,7 @@ export default function AddProductForm({
     try {
       const newProduct = await window.electronAPI.invoke<Product>(
         'add-product',
-        productData
+        productData,
       );
       console.log('Product added:', newProduct);
       handleClose();
@@ -71,12 +71,12 @@ export default function AddProductForm({
     (option: SelectOption) => {
       console.log('Selected option:', option);
       const selected = categories.find(
-        (category) => category.id.toString() === option.value
+        (category) => category.id.toString() === option.value,
       );
       console.log('Selected category:', selected);
       setSelectedCategory(selected || null);
     },
-    [categories]
+    [categories],
   );
 
   return (

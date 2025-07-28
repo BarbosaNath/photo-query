@@ -1,3 +1,16 @@
+.lds--sidebar {
+  position: fixed;
+  background-color: var(--lds-color-pure-white);
+  top: 0;
+  bottom: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .lds--sidebar + .lds--center-layout {
+    margin-left: calc(var(--lds-spacing-xxl) * 2 + var(--lds-spacing-sm));
+  }
+}
+
 .lds--sidebar__tertiary-items {
   display: none;
 }
@@ -15,6 +28,13 @@
 }
 
 @media screen and (min-width: 480px) and (max-width: 768px) {
+  .lds--sidebar {
+    top: unset;
+    bottom: unset;
+    left: 0;
+    right: 0;
+  }
+
   .lds--sidebar button.lds--icon-button:hover,
   .lds--sidebar .lds--icon-button:hover,
   .lds--sidebar .lds--icon-button:hover .lds--icon-button--title {
@@ -47,6 +67,13 @@
 }
 
 @media screen and (max-width: 480px) {
+  .lds--sidebar {
+    top: unset;
+    bottom: unset;
+    left: 0;
+    right: 0;
+  }
+
   .lds--stack:has(> .lds--sidebar) {
     flex-wrap: nowrap;
     flex-direction: column-reverse;
@@ -73,6 +100,14 @@
   }
 
   .lds--sidebar__main-items :nth-child(3) {
+    order: 1;
+  }
+
+  .lds--sidebar__main-items :nth-child(4) {
+    order: 3;
+  }
+
+  .lds--sidebar__main-items :nth-child(5) {
     order: 3;
   }
 

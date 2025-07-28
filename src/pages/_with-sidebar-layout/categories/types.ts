@@ -1,4 +1,4 @@
-import { Category } from "@utils/dtos";
+import { Category } from '@utils/dtos';
 
 export interface CategoryProps {
   categories: Array<Category>;

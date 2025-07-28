@@ -1,16 +1,22 @@
-import IconButton from "@components/icon-button";
-import IconLink from "@components/icon-link";
-import Modal from "@components/modal";
-import Stack from "@components/stack";
-import { PlusIcon, HomeIcon, LayersIcon } from "lucide-react";
-import { useCallback, useState } from "react";
-import "./sidebar.css";
-import AddProductForm from "@components/add-product-form";
+import IconButton from '@components/icon-button';
+import IconLink from '@components/icon-link';
+import Modal from '@components/modal';
+import Stack from '@components/stack';
+import {
+  PlusIcon,
+  LayersIcon,
+  BlocksIcon,
+  PackageSearchIcon,
+  PackageIcon,
+} from 'lucide-react';
+import { useCallback, useState } from 'react';
+import './sidebar.css';
+import AddProductForm from '@components/add-product-form';
 
 export default function Sidebar() {
   const [isAddProductOpen, setIsAddProductOpen] = useState(false);
 
-  const baseClass = "lds--sidebar";
+  const baseClass = 'lds--sidebar';
 
   const handleToggleAddProduct = useCallback(() => {
     setIsAddProductOpen((previousIsOpen) => !previousIsOpen);
@@ -38,12 +44,20 @@ export default function Sidebar() {
             Adicionar Produto
           </IconButton>
 
-          <IconLink icon={<HomeIcon />} to="/">
-            Home
+          <IconLink icon={<PackageSearchIcon />} to="/">
+            Buscar Produto
+          </IconLink>
+
+          <IconLink icon={<PackageIcon />} to="/product/$productId">
+            Detalhes do Produto
           </IconLink>
 
           <IconLink icon={<LayersIcon />} to="/categories">
             Categorias
+          </IconLink>
+
+          <IconLink icon={<BlocksIcon />} to="/characteristics">
+            Caracteristicas
           </IconLink>
         </Stack>
       </Stack>

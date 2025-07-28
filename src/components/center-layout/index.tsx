@@ -1,17 +1,17 @@
-import "./center-layout.css";
-import Stack from "@components/stack";
-import Text from "@components/text";
-import { CenterLayoutProps } from "./types";
+import './center-layout.css';
+import Stack from '@components/stack';
+import Text from '@components/text';
+import { CenterLayoutProps } from './types';
 
 export default function CenterLayout({
   title,
   subtitle,
   width,
   height,
-  justify = "center",
+  justify = 'center',
   children,
 }: CenterLayoutProps) {
-  const baseClassName = "lds--center-layout";
+  const baseClassName = 'lds--center-layout';
 
   return (
     <div className={baseClassName}>
@@ -43,8 +43,8 @@ export default function CenterLayout({
         <div
           className={`${baseClassName}--content`}
           style={{
-            width: width ? `${width}%` : "auto",
-            height: height ? `${height}%` : "auto",
+            width: width ? `${width}%` : 'auto',
+            height: height ? `${height}%` : 'auto',
           }}
         >
           {children}

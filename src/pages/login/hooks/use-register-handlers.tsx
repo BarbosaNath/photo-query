@@ -1,14 +1,14 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import { UserRegister } from "../types";
-import { useNavigate } from "@tanstack/react-router";
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { UserRegister } from '../types';
+import { useNavigate } from '@tanstack/react-router';
 
 export default function useLoginHandlers() {
   const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
   const [userRegisterBody, setUserRegisterBody] = useState<UserRegister>({
-    name: "",
-    email: "",
-    password: "",
+    name: '',
+    email: '',
+    password: '',
   });
   const userRegisterBodyRef = useRef(userRegisterBody);
   const redirect = useNavigate();
@@ -19,15 +19,15 @@ export default function useLoginHandlers() {
 
   const handleRegister = useCallback(
     async (e: React.FormEvent<HTMLFormElement>) => {
-      console.log("Chegou aqui");
+      console.log('Chegou aqui');
       e.preventDefault();
       try {
-        setErrorMessage("");
+        setErrorMessage('');
         setIsLoading(true);
-        sessionStorage.setItem("isLogged", "true");
-        redirect({ to: "/" });
+        sessionStorage.setItem('isLogged', 'true');
+        redirect({ to: '/' });
       } catch {
-        setErrorMessage("Algo deu errado ao registrar, tente novamente");
+        setErrorMessage('Algo deu errado ao registrar, tente novamente');
       } finally {
         setIsLoading(false);
       }
