@@ -65,7 +65,7 @@ export default function AddCharacteristic({
 
   return (
     <Card>
-      <Text>Adicionar caracteristica do(a) {product.name}</Text>
+      <Text>Adicionar caracteristica ao(à) {product.name}</Text>
 
       <Select
         options={characteristics.map((c) => ({

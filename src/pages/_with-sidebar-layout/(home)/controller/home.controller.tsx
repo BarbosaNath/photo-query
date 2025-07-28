@@ -74,6 +74,7 @@ export default function HomeController() {
     });
   };
 
+  console.log('Filtered Products', filteredProducts);
   return (
     <Home
       products={filteredProducts}

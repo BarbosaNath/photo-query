@@ -28,6 +28,7 @@ declare global {
           | AddSubcharacteristicsData
           | UpdateSubcharacteristicsData
           | RemoveProductCharacteristicData
+          | AddProductImageData
           | never,
       ) => Promise<T>;
     };
@@ -76,4 +77,9 @@ interface RemoveProductCharacteristicData {
   productId: number;
   characteristicId: number;
   subcharacteristicId?: number;
+}
+
+interface AddProductImageData {
+  productId: number;
+  imageFile: File | Buffer;
 }

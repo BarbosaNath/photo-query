@@ -89,12 +89,26 @@ export function getProductById({ id }) {
   return product;
 }
 
-export function addProductImage({ productId, imageUrl }) {
+export function addProductImageWithUrl({ productId, imageUrl }) {
   const insertImageSQL = `
         INSERT INTO product_images (product_id, image_url)
         VALUES (?, ?);
     `;
   db.prepare(insertImageSQL).run(productId, imageUrl);
+}
+
+export function addProductImage({ productId, imageFile }) {
+  const imageFileName = `${Date.now()}.png`;
+  const imageFilePath = path.join('public', 'images', imageFileName);
+  fs.writeFileSync(imageFilePath, imageFile);
+
+  const insertImageSQL = `
+        INSERT INTO product_images (product_id, image_url)
+        VALUES (?, ?);
+    `;
+  return db
+    .prepare(insertImageSQL)
+    .run(productId, path.join('images', imageFileName));
 }
 
 export function getProductImages(productId) {

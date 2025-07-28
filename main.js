@@ -5,6 +5,7 @@ import process from 'node:process';
 import {
   addProduct,
   getProductById,
+  addProductImage,
   addProductCharacteristic,
   updateProductCategory,
   deleteProductCharacteristic,
@@ -97,6 +98,10 @@ ipcMain.handle('remove-product-image', (_event, body) => {
 
 ipcMain.handle('update-category', (_event, body) => {
   return updateCategoryName(body);
+});
+
+ipcMain.handle('add-product-image', (_event, body) => {
+  return addProductImage(body);
 });
 
 ipcMain.handle('update-product-category', (_event, body) => {

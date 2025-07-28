@@ -10,6 +10,7 @@ import CharacteristicList from '../components/characteristic-list';
 import Modal from '@components/modal';
 import ChangeCategory from '../components/change-category';
 import AddCharacteristic from '../components/add-characteristic';
+import AddImage from '../components/add-image';
 
 export default function Product({
   product,
@@ -25,6 +26,8 @@ export default function Product({
   if (!product || !categories) {
     return <ProductNotFound onSelectProduct={handleSelectProduct} />;
   }
+
+  console.log('Product', { product });
 
   return (
     <>
@@ -47,6 +50,10 @@ export default function Product({
           product={product}
           onClose={handleAddCharacteristic}
         />
+      </Modal>
+
+      <Modal onClose={handleAddImage} isOpen={whichModalIsOpen === 'add-image'}>
+        <AddImage product={product} onClose={handleAddImage} />
       </Modal>
 
       <CenterLayout title="Detalhes do Produto" width={90}>

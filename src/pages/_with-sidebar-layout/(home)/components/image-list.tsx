@@ -8,7 +8,7 @@ export default function ImageList({ images }: { images: Product['images'] }) {
         images.map((image) => (
           <img
             key={image.id}
-            src={image.image_url}
+            src={`/${image.image_url}`}
             alt={'Product Image'}
             style={{
               width: '150px',

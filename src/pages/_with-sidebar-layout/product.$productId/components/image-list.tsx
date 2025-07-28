@@ -17,7 +17,7 @@ export default function ImageList({
         images.map((image) => (
           <div key={image.id} style={{ position: 'relative' }}>
             <img
-              src={image.image_url}
+              src={`/${image.image_url}`}
               alt={'Product Image'}
               style={{
                 width: '150px',
