@@ -10,6 +10,7 @@ export type HomeProps = SearchBarProps & FilterProps & ProductListProps;
 export interface SearchBarProps {
   searchValue: string;
   onChangeSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onShare: () => void;
 }
 
 export interface FilterProps {

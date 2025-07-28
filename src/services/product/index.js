@@ -1,6 +1,9 @@
 import sqlite from 'better-sqlite3';
 import path from 'node:path';
 import fs from 'fs';
+import { shell } from 'electron';
+import os from 'os';
+import { exec } from 'child_process';
 
 const db = sqlite('src/db/database.db', { verbose: console.log });
 
@@ -116,6 +119,44 @@ export function getProductImages(productId) {
         SELECT * FROM product_images WHERE product_id = ?;
     `;
   return db.prepare(getImagesSQL).all(productId);
+}
+
+export async function shareImages({ productsIds }) {
+  const getImagesSQL = `
+        SELECT pi.image_url
+        FROM product_images pi
+        JOIN products p ON p.id = pi.product_id
+        WHERE p.id IN (${productsIds.map(() => '?').join(', ')});
+    `;
+  const images = db.prepare(getImagesSQL).all(...productsIds);
+
+  // copy images to a temporary directory
+  const tempDir = path.join('public', 'temp');
+  if (!fs.existsSync(tempDir)) {
+    fs.mkdirSync(tempDir, { recursive: true });
+  } else {
+    // clear the temp directory
+    fs.readdirSync(tempDir).forEach((file) => {
+      fs.unlinkSync(path.join(tempDir, file));
+    });
+  }
+
+  images.map((image) => {
+    const sourcePath = path.join('public', image.image_url);
+    const destPath = path.join(tempDir, path.basename(image.image_url));
+    fs.copyFileSync(sourcePath, destPath);
+    return destPath;
+  });
+
+  const isWSL = os.release().toLowerCase().includes('microsoft');
+
+  if (isWSL) {
+    const winPath = '.\\' + tempDir.replaceAll('/', '\\');
+
+    exec(`explorer.exe "${winPath}"`);
+  } else {
+    await shell.openPath(tempDir);
+  }
 }
 
 export function deleteProductImage({ id }) {

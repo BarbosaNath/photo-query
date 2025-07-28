@@ -17,6 +17,7 @@ declare global {
           | `${Actions}-subcharacteristic`
           | `${Actions}-product-category`
           | `${Actions}-product-characteristic`
+          | 'share-images'
           | `${Actions}-product-image`,
         data?:
           | GetProductsData
@@ -29,6 +30,7 @@ declare global {
           | UpdateSubcharacteristicsData
           | RemoveProductCharacteristicData
           | AddProductImageData
+          | ShareImagesData
           | never,
       ) => Promise<T>;
     };
@@ -82,4 +84,8 @@ interface RemoveProductCharacteristicData {
 interface AddProductImageData {
   productId: number;
   imageFile: File | Buffer;
+}
+
+interface ShareImagesData {
+  productsIds: number[];
 }

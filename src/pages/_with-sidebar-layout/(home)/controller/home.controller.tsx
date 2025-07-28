@@ -74,6 +74,12 @@ export default function HomeController() {
     });
   };
 
+  const handleShare = () => {
+    window.electronAPI.invoke('share-images', {
+      productsIds: filteredProducts.map((p) => p.id),
+    });
+  };
+
   console.log('Filtered Products', filteredProducts);
   return (
     <Home
@@ -85,6 +91,7 @@ export default function HomeController() {
       selectedCharacteristics={selectedCharacteristics}
       onEdit={handleEdit}
       onRemove={() => {}}
+      onShare={handleShare}
       onChangeSearch={handleChangeSearch}
       onSelectCategory={handleSelectCategory}
       onSelectCharacteristic={handleSelectCharacteristic}

@@ -14,6 +14,7 @@ export default function Home({
   selectedCharacteristics,
   onEdit: handleEdit,
   onRemove: handleRemove,
+  onShare: handleShare,
   onChangeSearch: handleChangeSearch,
   onSelectCategory: handleSelectCategory,
   onSelectCharacteristic: handleSelectCharacteristic,
@@ -25,6 +26,7 @@ export default function Home({
           <SearchBar
             searchValue={searchValue}
             onChangeSearch={handleChangeSearch}
+            onShare={handleShare}
           />
 
           <Filters

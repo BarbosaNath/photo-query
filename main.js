@@ -6,6 +6,7 @@ import {
   addProduct,
   getProductById,
   addProductImage,
+  shareImages,
   addProductCharacteristic,
   updateProductCategory,
   deleteProductCharacteristic,
@@ -102,6 +103,10 @@ ipcMain.handle('update-category', (_event, body) => {
 
 ipcMain.handle('add-product-image', (_event, body) => {
   return addProductImage(body);
+});
+
+ipcMain.handle('share-images', (_event, body) => {
+  return shareImages(body);
 });
 
 ipcMain.handle('update-product-category', (_event, body) => {
