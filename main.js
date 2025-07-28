@@ -5,6 +5,8 @@ import process from 'node:process';
 import {
   addProduct,
   getProductById,
+  addProductCharacteristic,
+  updateProductCategory,
   deleteProductCharacteristic,
   deleteProductImage,
   filterProductsByMultipleCriteria,
@@ -81,6 +83,10 @@ ipcMain.handle('remove-category', (_event, body) => {
   return deleteCategory(body);
 });
 
+ipcMain.handle('add-product-characteristic', (_event, body) => {
+  return addProductCharacteristic(body);
+});
+
 ipcMain.handle('remove-product-characteristic', (_event, body) => {
   return deleteProductCharacteristic(body);
 });
@@ -91,6 +97,10 @@ ipcMain.handle('remove-product-image', (_event, body) => {
 
 ipcMain.handle('update-category', (_event, body) => {
   return updateCategoryName(body);
+});
+
+ipcMain.handle('update-product-category', (_event, body) => {
+  return updateProductCategory(body);
 });
 
 ipcMain.handle('get-characteristic', (_event, body) => {

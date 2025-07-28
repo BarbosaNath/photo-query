@@ -1,7 +1,8 @@
-import { Product } from '@utils/dtos';
+import { Category, Product } from '@utils/dtos';
 
 export interface ProductPageProps extends ProductNotFoundProps {
   product?: Product;
+  categories: Array<Category>;
   whichModalIsOpen:
     | 'add-image'
     | 'change-category'
@@ -28,4 +29,10 @@ export interface CharacteristicListProps {
     characteristicId: number,
     subcharacteristicId?: number,
   ) => void;
+}
+
+export interface ChangeCategoryProps {
+  product: Product;
+  categories: Array<Category>;
+  onClose: () => void;
 }

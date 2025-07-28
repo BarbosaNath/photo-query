@@ -4,7 +4,7 @@ import Product from '../view/product.view';
 import { ProductPageProps } from '../types';
 
 export default function ProductController() {
-  const product = Route.useLoaderData();
+  const { product, categories } = Route.useLoaderData();
   const redirect = Route.useNavigate();
 
   const [whichModalIsOpen, setWhichModalIsOpen] =
@@ -35,9 +35,12 @@ export default function ProductController() {
     redirect({ to: '.' });
   };
 
+  console.log('ProductController', { product, categories });
+
   return (
     <Product
       product={product}
+      categories={categories}
       whichModalIsOpen={whichModalIsOpen}
       onSelectProduct={() => redirect({ to: '/' })}
       onChangeCategory={() => handleChangeModal('change-category')}

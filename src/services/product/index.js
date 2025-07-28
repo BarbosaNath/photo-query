@@ -25,7 +25,16 @@ export function updateProductName({ id, newName }) {
         SET name = ?, updated_at = CURRENT_TIMESTAMP
         WHERE id = ?;
     `;
-  db.prepare(updateProductSQL).run(newName, id);
+  return db.prepare(updateProductSQL).run(newName, id);
+}
+
+export function updateProductCategory({ id, categoryId }) {
+  const updateProductCategorySQL = `
+        UPDATE products
+        SET category_id = ?, updated_at = CURRENT_TIMESTAMP
+        WHERE id = ?;
+    `;
+  return db.prepare(updateProductCategorySQL).run(categoryId, id);
 }
 
 export function deleteProduct(id) {
@@ -124,15 +133,28 @@ export function addProductCharacteristic({
   characteristicId,
   subcharacteristicId,
 }) {
-  const insertCharacteristicSQL = `
-        INSERT INTO product_characteristics (product_id, characteristic_id, subcharacteristic_id)
-        VALUES (?, ?, ?);
-    `;
-  db.prepare(insertCharacteristicSQL).run(
+  console.log('Adding product characteristic:', {
     productId,
     characteristicId,
     subcharacteristicId,
-  );
+  });
+  const insertCharacteristicSQL = subcharacteristicId
+    ? `
+        INSERT INTO product_characteristics (product_id, characteristic_id, subcharacteristic_id)
+        VALUES (?, ?, ?);
+    `
+    : `
+        INSERT INTO product_characteristics (product_id, characteristic_id)
+        VALUES (?, ?);
+    `;
+
+  if (subcharacteristicId) {
+    return db
+      .prepare(insertCharacteristicSQL)
+      .run(productId, characteristicId, subcharacteristicId);
+  }
+
+  return db.prepare(insertCharacteristicSQL).run(productId, characteristicId);
 }
 
 export function getProductCharacteristics(productId) {
