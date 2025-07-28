@@ -15,7 +15,8 @@ declare global {
           | `${Actions}-characteristic`
           | 'get-subcharacteristics'
           | `${Actions}-subcharacteristic`
-          | `${Actions}-product-characteristic`,
+          | `${Actions}-product-characteristic`
+          | `${Actions}-product-image`,
         data?:
           | GetProductsData
           | AddProductData

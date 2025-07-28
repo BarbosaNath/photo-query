@@ -18,9 +18,9 @@ export default function ProductController() {
 
   const handleRemoveImage = (imageId: number) => {
     window.electronAPI.invoke('remove-product-image', {
-      productId: product!.id,
-      imageId,
+      id: imageId,
     });
+    redirect({ to: '.' });
   };
 
   const handleRemoveCharacteristic = (

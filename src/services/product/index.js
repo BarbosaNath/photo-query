@@ -1,4 +1,6 @@
 import sqlite from 'better-sqlite3';
+import path from 'node:path';
+import fs from 'fs';
 
 const db = sqlite('src/db/database.db', { verbose: console.log });
 
@@ -93,11 +95,28 @@ export function getProductImages(productId) {
   return db.prepare(getImagesSQL).all(productId);
 }
 
-export function deleteProductImage(id) {
+export function deleteProductImage({ id }) {
+  const image = db
+    .prepare(
+      `
+        SELECT * FROM product_images WHERE id = ?;
+    `,
+    )
+    .get(id);
+
+  if (!image) {
+    throw new Error(`Image with id ${id} not found`);
+  }
+  const imagePath = path.join('public', image.image_url);
+
+  if (fs.existsSync(imagePath)) {
+    fs.unlinkSync(imagePath);
+  }
+
   const deleteImageSQL = `
         DELETE FROM product_images WHERE id = ?;
     `;
-  db.prepare(deleteImageSQL).run(id);
+  return db.prepare(deleteImageSQL).run(id);
 }
 
 export function addProductCharacteristic({

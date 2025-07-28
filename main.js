@@ -6,6 +6,7 @@ import {
   addProduct,
   getProductById,
   deleteProductCharacteristic,
+  deleteProductImage,
   filterProductsByMultipleCriteria,
 } from './src/services/product/index.js';
 import {
@@ -82,6 +83,10 @@ ipcMain.handle('remove-category', (_event, body) => {
 
 ipcMain.handle('remove-product-characteristic', (_event, body) => {
   return deleteProductCharacteristic(body);
+});
+
+ipcMain.handle('remove-product-image', (_event, body) => {
+  return deleteProductImage(body);
 });
 
 ipcMain.handle('update-category', (_event, body) => {
