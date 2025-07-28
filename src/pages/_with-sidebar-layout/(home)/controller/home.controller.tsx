@@ -80,6 +80,14 @@ export default function HomeController() {
     });
   };
 
+  const handleRemoveProduct = (productId: number) => {
+    window.electronAPI.invoke('remove-product', {
+      id: productId,
+    });
+
+    redirect({ to: '/' });
+  };
+
   console.log('Filtered Products', filteredProducts);
   return (
     <Home
@@ -90,7 +98,7 @@ export default function HomeController() {
       selectedCategory={selectedCategory}
       selectedCharacteristics={selectedCharacteristics}
       onEdit={handleEdit}
-      onRemove={() => {}}
+      onRemove={handleRemoveProduct}
       onShare={handleShare}
       onChangeSearch={handleChangeSearch}
       onSelectCategory={handleSelectCategory}

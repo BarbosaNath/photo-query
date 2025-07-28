@@ -7,6 +7,7 @@ import {
   getProductById,
   addProductImage,
   shareImages,
+  deleteProduct,
   addProductCharacteristic,
   updateProductCategory,
   deleteProductCharacteristic,
@@ -71,6 +72,10 @@ ipcMain.handle('get-products', (_event, body) => {
 
 ipcMain.handle('add-product', (_event, body) => {
   return addProduct(body);
+});
+
+ipcMain.handle('remove-product', (_event, body) => {
+  return deleteProduct(body);
 });
 
 ipcMain.handle('get-categories', (_event, body) => {

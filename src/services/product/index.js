@@ -40,7 +40,7 @@ export function updateProductCategory({ id, categoryId }) {
   return db.prepare(updateProductCategorySQL).run(categoryId, id);
 }
 
-export function deleteProduct(id) {
+export function deleteProduct({ id }) {
   const deleteProductSQL = `
         DELETE FROM products WHERE id = ?;
     `;
