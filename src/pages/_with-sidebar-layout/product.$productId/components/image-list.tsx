@@ -1,8 +1,16 @@
 import Stack from '@components/stack';
 import { Product } from '@utils/dtos';
-import { PencilIcon, TrashIcon, PlusIcon } from 'lucide-react';
+import { TrashIcon, PlusIcon } from 'lucide-react';
 
-export default function ImageList({ images }: { images: Product['images'] }) {
+export default function ImageList({
+  images,
+  onAddImage: handleAddImage,
+  onRemoveImage: handleRemoveImage,
+}: {
+  images: Product['images'];
+  onAddImage: () => void;
+  onRemoveImage: (imageId: number) => void;
+}) {
   return (
     <Stack direction="row" scroll="x" fullWidth>
       {images &&
@@ -24,24 +32,11 @@ export default function ImageList({ images }: { images: Product['images'] }) {
                 position: 'absolute',
                 right: '8px',
                 bottom: '8px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '4px',
               }}
             >
-              <PencilIcon
-                size={16}
-                style={{
-                  cursor: 'pointer',
-                  backgroundColor: 'var(--lds-color-pure-white)',
-                  overflow: 'visible',
-                  padding: '8px',
-                  borderRadius: '50%',
-                  boxShadow: '0 1px 2px rgba(0, 0, 0, 25%)',
-                }}
-              />
               <TrashIcon
                 size={16}
+                onClick={() => handleRemoveImage(image.id)}
                 style={{
                   cursor: 'pointer',
                   backgroundColor: 'var(--lds-color-pure-white)',
@@ -67,6 +62,7 @@ export default function ImageList({ images }: { images: Product['images'] }) {
           border: '3px solid var(--lds-color-dark-light)',
           borderRadius: 'var(--lds-radius)',
         }}
+        onClick={handleAddImage}
       >
         <PlusIcon
           size={64}

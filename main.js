@@ -5,6 +5,7 @@ import process from 'node:process';
 import {
   addProduct,
   getProductById,
+  deleteProductCharacteristic,
   filterProductsByMultipleCriteria,
 } from './src/services/product/index.js';
 import {
@@ -77,6 +78,10 @@ ipcMain.handle('add-category', (_event, body) => {
 
 ipcMain.handle('remove-category', (_event, body) => {
   return deleteCategory(body);
+});
+
+ipcMain.handle('remove-product-characteristic', (_event, body) => {
+  return deleteProductCharacteristic(body);
 });
 
 ipcMain.handle('update-category', (_event, body) => {

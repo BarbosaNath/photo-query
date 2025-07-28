@@ -14,7 +14,8 @@ declare global {
           | 'get-characteristics'
           | `${Actions}-characteristic`
           | 'get-subcharacteristics'
-          | `${Actions}-subcharacteristic`,
+          | `${Actions}-subcharacteristic`
+          | `${Actions}-product-characteristic`,
         data?:
           | GetProductsData
           | AddProductData
@@ -24,6 +25,7 @@ declare global {
           | GetSubcharacteristicsData
           | AddSubcharacteristicsData
           | UpdateSubcharacteristicsData
+          | RemoveProductCharacteristicData
           | never,
       ) => Promise<T>;
     };
@@ -66,4 +68,10 @@ interface UpdateSubcharacteristicsData {
   id: number;
   newName: string;
   characteristicId: number;
+}
+
+interface RemoveProductCharacteristicData {
+  productId: number;
+  characteristicId: number;
+  subcharacteristicId?: number;
 }

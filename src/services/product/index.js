@@ -123,11 +123,21 @@ export function getProductCharacteristics(productId) {
   return db.prepare(getCharacteristicsSQL).all(productId);
 }
 
-export function deleteProductCharacteristic(id) {
-  const deleteCharacteristicSQL = `
-        DELETE FROM product_characteristics WHERE id = ?;
+export function deleteProductCharacteristic({
+  productId,
+  characteristicId,
+  subcharacteristicId,
+}) {
+  let deleteCharacteristicSQL = `
+        DELETE FROM product_characteristics WHERE product_id = ? AND characteristic_id = ?
     `;
-  db.prepare(deleteCharacteristicSQL).run(id);
+  if (subcharacteristicId) {
+    deleteCharacteristicSQL += ` AND subcharacteristic_id = ?`;
+    return db
+      .prepare(deleteCharacteristicSQL)
+      .run(productId, characteristicId, subcharacteristicId);
+  }
+  return db.prepare(deleteCharacteristicSQL).run(productId, characteristicId);
 }
 
 export function filterProductsByMultipleCriteria(body) {

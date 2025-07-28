@@ -4,13 +4,18 @@ import { ProductPageProps } from '../types';
 import ProductNotFound from '../components/product-not-found';
 import Card from '@components/card';
 import Stack from '@components/stack';
-import { PencilIcon, PlusIcon, RefreshCwIcon } from 'lucide-react';
-import Pill from '@components/pill';
+import { RefreshCwIcon } from 'lucide-react';
 import ImageList from '../components/image-list';
+import CharacteristicList from '../components/characteristic-list';
 
 export default function Product({
   product,
   onSelectProduct: handleSelectProduct,
+  onChangeCategory: handleChangeCategory,
+  onAddCharacteristic: handleAddCharacteristic,
+  onRemoveCharacteristic: handleRemoveCharacteristic,
+  onAddImage: handleAddImage,
+  onRemoveImage: handleRemoveImage,
 }: ProductPageProps) {
   if (!product) {
     return <ProductNotFound onSelectProduct={handleSelectProduct} />;
@@ -29,39 +34,26 @@ export default function Product({
 
         <Stack align="center" space="xs" direction="row" fullWidth>
           <Text size="md">Categoria: {product.category_name}</Text>
-          <RefreshCwIcon size={14} cursor={'pointer'} />
+          <RefreshCwIcon
+            size={14}
+            cursor={'pointer'}
+            onClick={handleChangeCategory}
+          />
         </Stack>
 
         {product.characteristics && product.characteristics.length > 0 && (
-          <Stack space="xs" direction="row" align="center" fullWidth wrap>
-            <Text>Caracteristicas: </Text>
-
-            {product.characteristics.map((c) => (
-              <Pill
-                key={c.characteristicId}
-                hoverColor="success"
-                hoverComponent={
-                  <>
-                    {c.characteristicName}
-                    {c.subcharacteristicName
-                      ? `: ${c.subcharacteristicName}`
-                      : ''}{' '}
-                    <PencilIcon size={10} strokeWidth={2.5} />
-                  </>
-                }
-              >
-                {c.characteristicName}
-                {c.subcharacteristicName ? `: ${c.subcharacteristicName}` : ''}
-              </Pill>
-            ))}
-
-            <Pill hoverColor="success">
-              <PlusIcon size={12} />
-            </Pill>
-          </Stack>
+          <CharacteristicList
+            characteristics={product.characteristics}
+            onRemoveCharacteristic={handleRemoveCharacteristic}
+            onAddCharacteristic={handleAddCharacteristic}
+          />
         )}
 
-        <ImageList images={product.images} />
+        <ImageList
+          images={product.images}
+          onAddImage={handleAddImage}
+          onRemoveImage={handleRemoveImage}
+        />
 
         <Stack space="xs">
           <Text tertiary size="xs">
